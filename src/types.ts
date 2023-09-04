@@ -17,30 +17,30 @@ export enum GROUPS {
 //   ASSOCIATION
 // }
 
-export type T_TRANSLATION = [string, string, string, string];
+export type T_ROW = [string, string, string, string];
 
 // export type T_ONE_TRANSLATION = {
 //   type: T_TRANSLATION_TYPES.ONE_TRANSLATION,
 //   oneTranslation: string;
-//   items: T_TRANSLATION[];
+//   items: T_ROW[];
 // }
 //
 // export type T_ASSOCIATION = {
 //   type: T_TRANSLATION_TYPES.ASSOCIATION,
-//   items: (T_TRANSLATION | T_ONE_TRANSLATION)[];
+//   items: (T_ROW | T_ONE_TRANSLATION)[];
 // }
 
-export type T_SUBGROUP_ITEM = {
-  subgroupName: string;
-  subgroupItems: (T_TRANSLATION | T_TRANSLATION[])[];
-};
+export type T_VOCABULARY = T_GROUP_ITEM[];
 
 export type T_GROUP_ITEM = {
   groupName: GROUPS;
   groupItems: T_SUBGROUP_ITEM[];
 };
 
-export type T_VOCABULARY = T_GROUP_ITEM[];
+export type T_SUBGROUP_ITEM = {
+  subgroupName: string;
+  subgroupItems: (T_ROW | T_ROW[])[];
+};
 
 // export const db2: T_VOCABULARY = [{
 //   groupName: GROUPS.ADJECTIVE,

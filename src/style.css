@@ -6,13 +6,23 @@
 /*  background-color: beige;*/
 /*}*/
 
+table {
+  border-collapse: collapse;
+}
+
 .subgroup {
   font-size: 1.5em;
   padding-top: 20px;
 }
 
+tr {
+  border-bottom: 1px dotted lightgray;
+}
+
+tr.solid-border {
+  border-bottom: 1px solid black;
+}
+
 td {
   padding: 6px 0;
-  /*padding-top: 10px;*/
-  border-bottom: 1px dotted lightgray;
 }

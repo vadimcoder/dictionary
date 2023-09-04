@@ -1,7 +1,5 @@
 import { GROUPS, T_VOCABULARY } from "./types.ts";
 
-const SAME = "same";
-
 export const DB: T_VOCABULARY = [
   {
     groupName: GROUPS.NOUN,
@@ -660,7 +658,7 @@ export const DB: T_VOCABULARY = [
           ],
           [
             ["prison", "['prɪz(ə)n]", "тюрьма", "2023-03-01"],
-            ["jail", "[ʤeɪl]", SAME, "2023-03-01"],
+            ["jail", "[ʤeɪl]", "тюрьма", "2023-03-01"],
           ],
           [
             ["prisoner", "[ˈpriz(ə)nər]", "заключенный", "2023-03-01"],
@@ -775,7 +773,7 @@ export const DB: T_VOCABULARY = [
           ],
           [
             ["shelter", "[ˈʃel.tər]", "убежище", "2023-03-01"],
-            ["refuge", "[ˈrefjuːdʒ]", "", "2023-03-01"],
+            ["refuge", "[ˈrefjuːdʒ]", "убежище", "2023-03-01"],
             ["asylum", "[əˈsaɪləm]", "политическое убежище", "2023-03-01"],
           ],
           [
@@ -826,7 +824,7 @@ export const DB: T_VOCABULARY = [
           ],
           [
             ["interaction", "[ˌɪntərˈækʃən]", "взаимодействие", "2023-03-01"],
-            ["interplay", "[ˈɪntəpleɪ]", SAME, "2023-03-01"],
+            ["interplay", "[ˈɪntəpleɪ]", "взаимодействие", "2023-03-01"],
           ],
           [
             ["result", "[rɪˈzʌlt]", "результат", "2023-03-01"],
@@ -854,7 +852,7 @@ export const DB: T_VOCABULARY = [
           ],
           [
             ["inheritor", "[ɪnˈher.ɪ.tər]", "наследник", "2023-03-01"],
-            ["heir", "[eər]", SAME, "2023-03-01"],
+            ["heir", "[eər]", "наследник", "2023-03-01"],
           ],
           [
             ["hotel", "[həʊˈtel]", "гостинница", "2023-03-01"],
