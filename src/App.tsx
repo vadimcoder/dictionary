@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Fragment } from "react";
 import { DB } from "./db.ts";
 import { T_GROUP_ITEM, T_SUBGROUP_ITEM, T_ROW } from "./types.ts";
 
@@ -31,10 +31,14 @@ function Tr({
   const props = rowspan > 1 ? { rowSpan: rowspan } : {};
 
   return (
-    <tr className={isBorderBottom ? "solid-border" : ""}>
+    <tr className={isBorderBottom ? "solid-border" : undefined}>
       <td>{foreignWord}</td>
       <td>{transcription}</td>
-      {showRussianWord && <td {...props}>{russianWord}</td>}
+      {showRussianWord && (
+        <td {...props} className="foo">
+          {russianWord}
+        </td>
+      )}
 
       {/*{translation.map((value: string, index) => {*/}
       {/*  return index === (translation.length - 1) ?*/}
@@ -95,54 +99,28 @@ function seeForward(translations: T_ROW[], startIndex: number) {
 }
 
 function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP_ITEM }) {
-  // let rowspan = 1;
-
-  const subgroupItems = subgroupItem.subgroupItems.map((translation, index) => {
-    if (translation[0] instanceof Array) {
-      return (
-        <Associations key={translation[0][0]} rows={translation as T_ROW[]} />
-      );
-    }
-
-    // if (rowspan === 1) {
-    //   rowspan = seeForward(subgroupItem.subgroupItems as T_ROW[], index);
-    // } else {
-    //   rowspan--;
-    // }
-
-    return (
-      <Tr
-        key={translation[0]}
-        translation={translation as T_ROW}
-        translations={subgroupItem.subgroupItems as T_ROW[]}
-        index={index}
-      />
-    );
-  });
-
-  // const hh = [];
-  //
-  // for (let i = 0; i < subgroupItem.subgroupItems.length; ++i) {
-  //   const translation = subgroupItem.subgroupItems[i];
-  //
-  //   if (translation[0] instanceof Array) {
-  //     hh.push(<Associations key={translation[0][0]} rows={translation as T_ROW[]} />);
-  //   } else {
-  //     hh.push(<Tr key={translation[0]} translation={translation as T_ROW} />);
-  //   }
-  //
-  // }
-
   return (
-    <React.Fragment>
-      <tr>
-        <td colSpan={4} className="subgroup">
-          {subgroupItem.subgroupName}
-        </td>
-      </tr>
+    <>
+      {subgroupItem.subgroupItems.map((translation, index) => {
+        if (translation[0] instanceof Array) {
+          return (
+            <Associations
+              key={translation[0][0]}
+              rows={translation as T_ROW[]}
+            />
+          );
+        }
 
-      {subgroupItems}
-    </React.Fragment>
+        return (
+          <Tr
+            key={translation[0]}
+            translation={translation as T_ROW}
+            translations={subgroupItem.subgroupItems as T_ROW[]}
+            index={index}
+          />
+        );
+      })}
+    </>
   );
 }
 
@@ -178,24 +156,25 @@ export function App() {
   // }
 
   return (
-    <React.Fragment key={123}>
+    <Fragment key={123}>
       {DB.map((group: T_GROUP_ITEM) => {
         return (
-          <React.Fragment key={group.groupName}>
+          <Fragment key={group.groupName}>
             <h1>{group.groupName}</h1>
-            <table cellSpacing={0}>
-              <tbody>
-                {group.groupItems.map((subgroupItem: T_SUBGROUP_ITEM) => (
-                  <SubgroupItem
-                    key={subgroupItem.subgroupName}
-                    subgroupItem={subgroupItem}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </React.Fragment>
+
+            {group.groupItems.map((subgroupItem: T_SUBGROUP_ITEM) => (
+              <Fragment key={subgroupItem.subgroupName}>
+                <table cellSpacing={0}>
+                  <caption>{subgroupItem.subgroupName}</caption>
+                  <tbody>
+                    <SubgroupItem subgroupItem={subgroupItem} />
+                  </tbody>
+                </table>
+              </Fragment>
+            ))}
+          </Fragment>
         );
       })}
-    </React.Fragment>
+    </Fragment>
   );
 }
