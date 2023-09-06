@@ -1,0 +1,11 @@
+.latestSelector {
+    display: flex;
+}
+
+.latestSelector__value {
+    margin-inline-end: 10px;
+}
+
+.latestSelector__input {
+    width: 100%;
+}

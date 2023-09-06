@@ -19,6 +19,8 @@ export enum GROUPS {
 
 export type T_ROW = [string, string, string, string];
 
+export type T_ROW_DATE = [string, string, string, Date];
+
 // export type T_ONE_TRANSLATION = {
 //   type: T_TRANSLATION_TYPES.ONE_TRANSLATION,
 //   oneTranslation: string;
@@ -33,7 +35,7 @@ export type T_ROW = [string, string, string, string];
 export type T_VOCABULARY = T_GROUP_ITEM[];
 
 export type T_GROUP_ITEM = {
-  groupName: GROUPS;
+  groupName: string;
   groupItems: T_SUBGROUP_ITEM[];
 };
 

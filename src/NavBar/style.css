@@ -1,0 +1,8 @@
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+a.active {
+    font-weight: bold;
+}
