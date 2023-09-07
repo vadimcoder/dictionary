@@ -3,14 +3,14 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit",
     "lint-auto-fix": "eslint . --ext ts,tsx --report-unused-disable-directives --fix",
     "preview": "vite preview",
     "dist-clean": "rm -fr dist/*",
     "ts-node": "ts-node",
-    "download": "rm -fr compiled && tsc && node compiled/download/download.js"
+    "node-tasks": "rm -fr compiled && tsc && node compiled/node-tasks/run.js"
   },
   "dependencies": {
     "date-fns": "^2.30.0",

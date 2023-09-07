@@ -17,9 +17,7 @@ export enum GROUPS {
 //   ASSOCIATION
 // }
 
-export type T_ROW = [string, string, string, string, boolean];
-
-export type T_ROW_DATE = [string, string, string, Date, boolean];
+export type T_ROW = [string, string, string, Date, boolean];
 
 // export type T_ONE_TRANSLATION = {
 //   type: T_TRANSLATION_TYPES.ONE_TRANSLATION,

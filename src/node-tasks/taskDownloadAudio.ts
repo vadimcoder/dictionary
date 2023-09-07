@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
-import { getAllRows } from "../db/helpers.js";
+import { forEachRow } from "../db/helpers.js";
 import { T_ROW, T_VOCABULARY } from "../types";
-import { readDbFromFile, writeDbToFile } from "./common";
+import { readDbFromFile, writeDbToFile } from "./common.js";
 
 async function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -13,7 +13,7 @@ function fetchWordSync(word: string) {
   --output audio/${word}.mp3 \
   "https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${word}&tl=en-us&client=tw-ob"`;
 
-  console.log("word", word);
+  console.log("word:", word);
 
   execSync(COMMAND);
 }
@@ -27,9 +27,7 @@ function markFetched(row: T_ROW) {
 }
 
 async function downloadAudioAndMutateDb(db: T_VOCABULARY) {
-  const rows = getAllRows(db);
-
-  for (const row of rows) {
+  await forEachRow(db, async (row: T_ROW) => {
     const word = row[0];
 
     if (isNotFetched(row)) {
@@ -37,13 +35,13 @@ async function downloadAudioAndMutateDb(db: T_VOCABULARY) {
       markFetched(row);
       await sleep();
     }
-  }
+  });
 }
 
-export async function downloadAudio() {
+export async function taskDownloadAudio() {
   const db = readDbFromFile();
 
   await downloadAudioAndMutateDb(db);
 
-  writeDbToFile(db);
+  await writeDbToFile(db);
 }

@@ -18,7 +18,7 @@ export function LatestSelector() {
 
   return (
     <div className="latestSelector">
-      <span className="latestSelector__value">{globalState.lastRowsCount}</span>
+      <div className="latestSelector__value">{globalState.lastRowsCount}</div>
 
       <input
         className={"latestSelector__input"}

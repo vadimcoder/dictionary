@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { T_GROUP_ITEM, T_SUBGROUP_ITEM, T_ROW } from "./types";
-import { getDb } from "./db/helpers";
+import { db } from "./db/db";
 
 function Tr({
   translation,
@@ -16,7 +16,7 @@ function Tr({
   let rowspan = 1;
   let showRussianWord = true;
 
-  const [foreignWord, transcription, russianWord] = translation;
+  const [foreignWord, transcription, russianWord, dateAdded] = translation;
 
   if (russianWord) {
     showRussianWord = !isBackwardTranslationTheSame(translations, index);
@@ -30,18 +30,9 @@ function Tr({
 
   return (
     <tr className={isBorderBottom ? "solid-border" : undefined}>
-      <td>{foreignWord}</td>
+      <td title={dateAdded.toString()}>{foreignWord}</td>
       <td>{transcription}</td>
       {showRussianWord && <td {...props}>{russianWord}</td>}
-
-      {/*{translation.map((value: string, index) => {*/}
-      {/*  return index === (translation.length - 1) ?*/}
-      {/*    null : (*/}
-      {/*    <td key={value + index} >*/}
-      {/*      {value}*/}
-      {/*    </td>*/}
-      {/*    );*/}
-      {/*})}*/}
     </tr>
   );
 }
@@ -147,7 +138,7 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP_ITEM }) {
 export function All() {
   return (
     <Fragment>
-      {getDb().map((group: T_GROUP_ITEM) => {
+      {db.map((group: T_GROUP_ITEM) => {
         return (
           <Fragment key={group.groupName}>
             <h1>{group.groupName}</h1>
