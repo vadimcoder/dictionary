@@ -1,0 +1,18 @@
+[
+  {
+    "groupName": "Noun",
+    "groupItems": [
+      {
+        "subgroupName": "Days of the Week",
+        "subgroupItems": [
+          [
+            ["Monday", "['mʌndeɪ]", "понедельник", "2023-03-02"],
+            ["Monday", "['mʌndeɪ]", "понедельник", "2023-03-02"]
+          ],
+          ["Tuesday", "['t(j)uːzdɪ]", "вторник", "2023-03-01"],
+          ["Wednesday", "['wenzdeɪ]", "среда", "2023-03-01"]
+        ]
+      }
+    ]
+  }
+]

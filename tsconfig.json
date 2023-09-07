@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
+    "outDir": "compiled",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -19,7 +17,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny":true
+    "noImplicitAny": true
+
+    //    "esModuleInterop": true // only for ts-node to be able to use import in .ts files
   },
   "include": ["src"]
 }

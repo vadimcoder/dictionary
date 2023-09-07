@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { T_GROUP_ITEM, T_SUBGROUP_ITEM, T_ROW } from "./types.ts";
-import { getDB } from "./database/helpers.ts";
+import { T_GROUP_ITEM, T_SUBGROUP_ITEM, T_ROW } from "./types";
+import { getDb } from "./db/helpers";
 
 function Tr({
   translation,
@@ -147,7 +147,7 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP_ITEM }) {
 export function All() {
   return (
     <Fragment>
-      {getDB().map((group: T_GROUP_ITEM) => {
+      {getDb().map((group: T_GROUP_ITEM) => {
         return (
           <Fragment key={group.groupName}>
             <h1>{group.groupName}</h1>

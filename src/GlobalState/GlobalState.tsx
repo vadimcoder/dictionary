@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getStoredState, storeState } from "./helpers.ts";
+import { getStoredState, storeState } from "./helpers";
 
 export type T_GLOBAL_STATE = {
   lastRowsCount: number;

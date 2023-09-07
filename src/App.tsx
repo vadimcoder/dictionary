@@ -1,8 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { All } from "./All.tsx";
-import { Latest } from "./Latest/Latest.tsx";
-import { NavBar } from "./NavBar/NavBar.tsx";
-import { GlobalState } from "./GlobalState/GlobalState.tsx";
+import { All } from "./All";
+import { Latest } from "./Latest/Latest";
+import { NavBar } from "./NavBar/NavBar";
+import { GlobalState } from "./GlobalState/GlobalState";
+// import { getAllRows, getDb } from "./db/helpers";
 
 export function App() {
   return (
@@ -23,57 +24,18 @@ export function App() {
   );
 }
 
-// const Context1 = createContext();
+// const rows = getAllRows();
+// console.log("rows", rows);
+// debugger;
 //
-// function Component1() {
-//   const context1 = useContext(Context1);
+// rows[0][0] = rows[0][0] + "0";
+// rows[1][0] = rows[1][0] + "1";
+// rows[2][0] = rows[2][0] + "2";
+// rows[3][0] = rows[3][0] + "3";
 //
-//   console.log("context1", context1);
+// const rows2 = getAllRows();
+// console.log("rows2", rows2);
+// debugger;
 //
-//   return (
-//     <>
-//       <div>Component1: {context1[0]}</div>
-//     </>
-//   );
-// }
-//
-// function Component2() {
-//   const context1 = useContext(Context1);
-//
-//   return (
-//     <>
-//       <div>Component2: {context1[0]}</div>
-//     </>
-//   );
-// }
-//
-// function Component3() {
-//   const context1 = useContext(Context1);
-//
-//   return (
-//     <>
-//       <button
-//         onClick={() => {
-//           context1[1]("rrr");
-//         }}
-//       >
-//         123
-//       </button>
-//       {context1[0]}
-//     </>
-//   );
-// }
-//
-// export function App() {
-//   const globalState = useState("sdf");
-//
-//   return (
-//     <Context1.Provider value={globalState}>
-//       <Fragment>
-//         <Component1 />
-//         <Component2 />
-//         <Component3 />
-//       </Fragment>
-//     </Context1.Provider>
-//   );
-// }
+// console.log("db", getDb());
+// debugger;

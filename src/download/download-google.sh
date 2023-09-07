@@ -1,1 +1,0 @@
-curl -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" --output arity.mp3 "https://translate.google.com.vn/translate_tts?ie=UTF-8&q=water&tl=en-us&client=tw-ob"

@@ -1,12 +1,12 @@
 import "./style.css";
-import { useGlobalState } from "../../GlobalState/GlobalState.tsx";
+import { useGlobalState } from "../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
 
 const DAYS_AGO_MAX = 100;
 
 export function LatestSelector() {
   const [globalState, setGlobalState] = useGlobalState();
-  console.log("globalState", globalState);
+
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     const value = parseInt(event.target.value);
 

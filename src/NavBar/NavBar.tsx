@@ -1,6 +1,6 @@
 import "./style.css";
 import { NavLink } from "react-router-dom";
-import { DirSwitcher } from "./DirSwitcher/DirSwitcher.tsx";
+import { DirSwitcher } from "./DirSwitcher/DirSwitcher";
 
 export function NavBar() {
   return (

@@ -1,4 +1,4 @@
-import { T_GLOBAL_STATE } from "./GlobalState.tsx";
+import { T_GLOBAL_STATE } from "./GlobalState";
 
 const LOCAL_STORAGE_KEY = "globalState";
 

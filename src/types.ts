@@ -1,5 +1,5 @@
-const NOUN = "Noun";
-const ADJECTIVE = "The Adjective";
+// const NOUN = "Noun";
+// const ADJECTIVE = "The Adjective";
 
 // type PART_OF_SPEECH = NOUN |
 
@@ -17,9 +17,9 @@ export enum GROUPS {
 //   ASSOCIATION
 // }
 
-export type T_ROW = [string, string, string, string];
+export type T_ROW = [string, string, string, string, boolean];
 
-export type T_ROW_DATE = [string, string, string, Date];
+export type T_ROW_DATE = [string, string, string, Date, boolean];
 
 // export type T_ONE_TRANSLATION = {
 //   type: T_TRANSLATION_TYPES.ONE_TRANSLATION,
