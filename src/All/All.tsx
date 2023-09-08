@@ -12,8 +12,8 @@ function Associations({ rows }: { rows: T_ROW[] }) {
         return (
           <Tr
             key={row[0]}
-            translation={row}
-            translations={rows}
+            row={row}
+            rows={rows}
             index={index}
             isBorderBottom={isBorderBottom}
           />
@@ -34,8 +34,8 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP }) {
     return (
       <Tr
         key={translation[0]}
-        translation={translation as T_ROW}
-        translations={subgroupItem.rows as T_ROW[]}
+        row={translation as T_ROW}
+        rows={subgroupItem.rows as T_ROW[]}
         index={index}
       />
     );

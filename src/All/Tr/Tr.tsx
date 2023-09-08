@@ -1,28 +1,29 @@
 import "./style.css";
 import { T_ROW } from "../../types";
 import { Player } from "../../Player/Player";
+import { ForeignWord } from "../../ForeignWord/ForeignWord";
 
 export function Tr({
-  translation,
-  translations,
+  row,
+  rows,
   index,
   isBorderBottom = false,
 }: {
-  translation: T_ROW;
-  translations: T_ROW[];
+  row: T_ROW;
+  rows: T_ROW[];
   index: number;
   isBorderBottom?: boolean;
 }) {
   let rowspan = 1;
   let showRussianWord = true;
 
-  const [foreignWord, transcription, russianWord, dateAdded] = translation;
+  const [foreignWord, transcription, russianWord] = row;
 
   if (russianWord) {
-    showRussianWord = !isBackwardTranslationTheSame(translations, index);
+    showRussianWord = !isBackwardTranslationTheSame(rows, index);
 
     if (showRussianWord) {
-      rowspan = seeForward(translations, index);
+      rowspan = seeForward(rows, index);
     }
   }
 
@@ -33,15 +34,8 @@ export function Tr({
       <td>
         <Player word={foreignWord} />
       </td>
-      <td title={dateAdded.toString()}>
-        <a
-          className={"row__foreignWord"}
-          target={"_blank"}
-          href={`https://translate.google.com/details?sl=en&tl=ru&text=${foreignWord}&op=translate`}
-          rel="noreferrer"
-        >
-          {foreignWord}
-        </a>
+      <td>
+        <ForeignWord row={row} />
       </td>
       <td>{transcription}</td>
       {showRussianWord && <td {...props}>{russianWord}</td>}
