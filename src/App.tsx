@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { All } from "./All";
+import { All } from "./All/All";
 import { Latest } from "./Latest/Latest";
 import { NavBar } from "./NavBar/NavBar";
 import { GlobalState } from "./GlobalState/GlobalState";
