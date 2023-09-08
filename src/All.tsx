@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { T_GROUP, T_SUBGROUP, T_ROW } from "./types";
 import { db } from "./db/db";
+import { Player } from "./Player/Player";
 
 function Tr({
   translation,
@@ -30,6 +31,9 @@ function Tr({
 
   return (
     <tr className={isBorderBottom ? "solid-border" : undefined}>
+      <td>
+        <Player word={foreignWord} />
+      </td>
       <td title={dateAdded.toString()}>{foreignWord}</td>
       <td>{transcription}</td>
       {showRussianWord && <td {...props}>{russianWord}</td>}
@@ -104,7 +108,7 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP }) {
   return (
     <Fragment>
       <tr>
-        <td colSpan={4} className="subgroup">
+        <td colSpan={5} className="subgroup">
           {subgroupItem.subgroupName}
         </td>
       </tr>
