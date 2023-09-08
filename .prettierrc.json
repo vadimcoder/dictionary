@@ -3,7 +3,7 @@
     {
       "files": "store.json",
       "options": {
-        "printWidth": 140
+        "printWidth": 150
       }
     }
   ]

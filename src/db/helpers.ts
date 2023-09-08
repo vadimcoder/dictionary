@@ -1,13 +1,24 @@
-import { T_ROW, T_VOCABULARY } from "../types";
+import { T_ROW, T_SUBGROUP, T_VOCABULARY } from "../types";
 import { db } from "./db.js";
+
+export function forEachSubgroup(
+  db: T_VOCABULARY,
+  callback: (subgroup: T_SUBGROUP) => void,
+) {
+  for (const group of db) {
+    for (const subgroup of group.subgroups) {
+      callback(subgroup);
+    }
+  }
+}
 
 export async function forEachRow(
   db: T_VOCABULARY,
   callback: (row: T_ROW) => Promise<void> | void,
 ) {
-  for (const { groupItems } of db) {
-    for (const { subgroupItems } of groupItems) {
-      for (const item of subgroupItems) {
+  for (const group of db) {
+    for (const subgroup of group.subgroups) {
+      for (const item of subgroup.rows) {
         if (item[0] instanceof Array) {
           for (const row of item as T_ROW[]) {
             const returnValue = callback(row);

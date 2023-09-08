@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { T_GROUP_ITEM, T_SUBGROUP_ITEM, T_ROW } from "./types";
+import { T_GROUP, T_SUBGROUP, T_ROW } from "./types";
 import { db } from "./db/db";
 
 function Tr({
@@ -83,44 +83,23 @@ function seeForward(translations: T_ROW[], startIndex: number) {
   return rowspan;
 }
 
-function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP_ITEM }) {
-  // let rowspan = 1;
-
-  const subgroupItems = subgroupItem.subgroupItems.map((translation, index) => {
+function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP }) {
+  const subgroupItems = subgroupItem.rows.map((translation, index) => {
     if (translation[0] instanceof Array) {
       return (
         <Associations key={translation[0][0]} rows={translation as T_ROW[]} />
       );
     }
 
-    // if (rowspan === 1) {
-    //   rowspan = seeForward(subgroupItem.subgroupItems as T_ROW[], index);
-    // } else {
-    //   rowspan--;
-    // }
-
     return (
       <Tr
         key={translation[0]}
         translation={translation as T_ROW}
-        translations={subgroupItem.subgroupItems as T_ROW[]}
+        translations={subgroupItem.rows as T_ROW[]}
         index={index}
       />
     );
   });
-
-  // const hh = [];
-  //
-  // for (let i = 0; i < subgroupItem.subgroupItems.length; ++i) {
-  //   const translation = subgroupItem.subgroupItems[i];
-  //
-  //   if (translation[0] instanceof Array) {
-  //     hh.push(<Associations key={translation[0][0]} rows={translation as T_ROW[]} />);
-  //   } else {
-  //     hh.push(<Tr key={translation[0]} translation={translation as T_ROW} />);
-  //   }
-  //
-  // }
 
   return (
     <Fragment>
@@ -138,13 +117,13 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP_ITEM }) {
 export function All() {
   return (
     <Fragment>
-      {db.map((group: T_GROUP_ITEM) => {
+      {db.map((group: T_GROUP) => {
         return (
           <Fragment key={group.groupName}>
             <h1>{group.groupName}</h1>
             <table cellSpacing={0}>
               <tbody>
-                {group.groupItems.map((subgroupItem: T_SUBGROUP_ITEM) => (
+                {group.subgroups.map((subgroupItem: T_SUBGROUP) => (
                   <SubgroupItem
                     key={subgroupItem.subgroupName}
                     subgroupItem={subgroupItem}

@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import querystring from "querystring";
 import { forEachRow } from "../db/helpers.js";
 import { T_ROW, T_VOCABULARY } from "../types";
 import { readDbFromFile, writeDbToFile } from "./common.js";
@@ -7,11 +8,18 @@ async function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
+function getFilename(word: string) {
+  return word.replace(/\W/g, "-");
+}
+
 function fetchWordSync(word: string) {
+  const filename = getFilename(word);
+  const wordEscaped = querystring.escape(word);
+
   const COMMAND = `curl \
   -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" \
-  --output audio/${word}.mp3 \
-  "https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${word}&tl=en-us&client=tw-ob"`;
+  --output audio/${filename}.mp3 \
+  "https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${wordEscaped}&tl=en-us&client=tw-ob"`;
 
   console.log("word:", word);
 
@@ -26,7 +34,7 @@ function markFetched(row: T_ROW) {
   row[4] = true;
 }
 
-async function downloadAudioAndMutateDb(db: T_VOCABULARY) {
+async function downloadAudio(db: T_VOCABULARY) {
   await forEachRow(db, async (row: T_ROW) => {
     const word = row[0];
 
@@ -39,9 +47,13 @@ async function downloadAudioAndMutateDb(db: T_VOCABULARY) {
 }
 
 export async function taskDownloadAudio() {
-  const db = readDbFromFile();
+  const db: T_VOCABULARY = readDbFromFile();
 
-  await downloadAudioAndMutateDb(db);
-
-  await writeDbToFile(db);
+  try {
+    await downloadAudio(db);
+  } catch (e) {
+    console.log(e);
+  } finally {
+    await writeDbToFile(db);
+  }
 }
