@@ -2,7 +2,7 @@ import "./style.css";
 import { useGlobalState } from "../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
 
-const DAYS_AGO_MAX = 100;
+const DAYS_AGO_MAX = 200;
 
 export function LatestSelector() {
   const [globalState, setGlobalState] = useGlobalState();

@@ -11,4 +11,6 @@
 .ForeignWordCollapsibleLinks {
   grid-column: 1/3;
   grid-row: 2/3;
+  display: flex;
+  gap: 5px;
 }

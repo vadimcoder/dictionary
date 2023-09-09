@@ -1,16 +1,18 @@
 import sortBy from "lodash.sortby";
 import { useGlobalState } from "../GlobalState/GlobalState";
 import { getAllRows } from "../db/helpers";
-import { T_ROW } from "../types";
+import { T_ROW_WITH_ASSOCIATION } from "../types";
 import { Player } from "../Player/Player";
 import { ForeignWord } from "../ForeignWord/ForeignWord";
 
-function getSortedRows(rows: T_ROW[]): T_ROW[] {
-  return sortBy(rows, (row: T_ROW) => row[3]);
+function getSortedRows(
+  rows: T_ROW_WITH_ASSOCIATION[],
+): T_ROW_WITH_ASSOCIATION[] {
+  return sortBy(rows, (row: T_ROW_WITH_ASSOCIATION) => row.row[3]);
 }
 
-function getRows(lastRowsCount: number): T_ROW[] {
-  const rows = getAllRows();
+function getRows(lastRowsCount: number): T_ROW_WITH_ASSOCIATION[] {
+  const rows: T_ROW_WITH_ASSOCIATION[] = getAllRows();
 
   const rowsSorted = getSortedRows(rows);
 
@@ -25,16 +27,17 @@ export function LatestList() {
   return (
     <table>
       <tbody>
-        {rows.map((row) => (
-          <tr key={row[0]}>
+        {rows.map((row: T_ROW_WITH_ASSOCIATION) => (
+          <tr key={row.row[0]}>
             <td>
-              <Player word={row[0]} />
+              <Player word={row.row[0]} />
             </td>
             <td>
-              <ForeignWord row={row} />
+              <ForeignWord row={row.row} />
+              {row.associations && <div>{row.associations[0][0]}</div>}
             </td>
-            <td>{row[1]}</td>
-            <td>{row[2]}</td>
+            <td>{row.row[1]}</td>
+            <td>{row.row[2]}</td>
           </tr>
         ))}
       </tbody>

@@ -16,10 +16,9 @@ export function Player({ word }: { word: string }) {
         preload="none"
         ref={audio}
       />
-      <button onClick={play} className={"player__button"}>
-        ▶
+      <button onClick={play} className={"player__button"} title="Play">
+        <span aria-hidden="true">▶</span>
       </button>
-      {/*<button onClick={() => audio.current!.play()}>p</button>*/}
     </div>
   );
 }
