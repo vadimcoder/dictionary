@@ -1,4 +1,3 @@
-import "./style.css";
 import { T_ROW } from "../../types";
 import { ForeignWord } from "../../ForeignWord/ForeignWord";
 
