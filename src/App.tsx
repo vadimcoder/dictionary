@@ -1,4 +1,4 @@
-import "./colors.css";
+import "./style/style.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { All } from "./All/All";
 import { Latest } from "./Latest/Latest";

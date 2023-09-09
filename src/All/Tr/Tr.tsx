@@ -1,6 +1,5 @@
 import "./style.css";
 import { T_ROW } from "../../types";
-import { Player } from "../../Player/Player";
 import { ForeignWord } from "../../ForeignWord/ForeignWord";
 
 export function Tr({
@@ -17,7 +16,8 @@ export function Tr({
   let rowspan = 1;
   let showRussianWord = true;
 
-  const [foreignWord, transcription, russianWord] = row;
+  const transcription = row[1];
+  const russianWord = row[2];
 
   if (russianWord) {
     showRussianWord = !isBackwardTranslationTheSame(rows, index);
@@ -31,9 +31,6 @@ export function Tr({
 
   return (
     <tr className={`row${isBorderBottom ? " solid-border" : ""}`}>
-      <td>
-        <Player word={foreignWord} />
-      </td>
       <td>
         <ForeignWord row={row} />
       </td>

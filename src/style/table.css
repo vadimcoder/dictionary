@@ -22,4 +22,5 @@ tr.solid-border {
 
 td {
   padding: 6px 0;
+  vertical-align: top;
 }

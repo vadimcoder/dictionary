@@ -1,16 +1,5 @@
-.ForeignWord {
-  display: grid;
-  grid-template-columns: auto 30px;
-}
-
-.ForeignWord__default-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.ForeignWordCollapsibleLinks {
-  grid-column: 1/3;
-  grid-row: 2/3;
+.ForeignWord__top {
   display: flex;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: flex-start;
 }

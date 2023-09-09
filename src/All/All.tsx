@@ -44,7 +44,7 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP }) {
   return (
     <Fragment>
       <tr>
-        <td colSpan={5} className="subgroup">
+        <td colSpan={3} className="subgroup">
           {subgroupItem.subgroupName}
         </td>
       </tr>
