@@ -1,0 +1,11 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1.5em;
+}
+
+h1 {
+  font-size: 1.5rem;
+}

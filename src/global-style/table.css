@@ -1,15 +1,11 @@
-*, ::before, ::after {
-  box-sizing: border-box;
-}
-
 table {
   border-collapse: collapse;
-  font-size: 150%;
 }
 
 .subgroup {
-  font-size: 1.5em;
   padding-top: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 tr {

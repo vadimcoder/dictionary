@@ -1,7 +1,7 @@
-import "./style/style.css";
+import "./global-style/index.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { All } from "./All/All";
-import { Latest } from "./Latest/Latest";
+import { All } from "./TabAll/All";
+import { TabLatest } from "./TabLatest/TabLatest/TabLatest";
 import { NavBar } from "./NavBar/NavBar";
 import { GlobalState } from "./GlobalState/GlobalState";
 
@@ -14,7 +14,7 @@ export function App() {
         <main>
           <Routes>
             <Route path={"/"} Component={All} />
-            <Route path={"/latest"} Component={Latest} />
+            <Route path={"/latest"} Component={TabLatest} />
 
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>

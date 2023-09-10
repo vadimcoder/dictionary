@@ -1,5 +1,5 @@
 import fs from "fs";
-import { T_VOCABULARY } from "../types";
+import { T_VOCABULARY } from "../db/types";
 import { prettify } from "./prettify.js";
 
 export const PATH = "src/db/store.json";

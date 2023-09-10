@@ -1,5 +1,5 @@
 import { readDbFromFile, writeDbToFile } from "./common.js";
-import { T_ROW, T_SUBGROUP, T_VOCABULARY } from "../types";
+import { T_ROW, T_SUBGROUP, T_VOCABULARY } from "../db/types";
 import { forEachSubgroup } from "../db/helpers.js";
 import { ALPHABETICAL } from "../db/constants.js";
 import sortBy from "lodash.sortby";

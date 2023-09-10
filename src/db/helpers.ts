@@ -1,9 +1,4 @@
-import {
-  T_ROW_WITH_ASSOCIATION,
-  T_ROW,
-  T_SUBGROUP,
-  T_VOCABULARY,
-} from "../types";
+import { T_ROW, T_SUBGROUP, T_VOCABULARY } from "./types";
 import { db } from "./db.js";
 
 export function forEachSubgroup(
@@ -44,8 +39,13 @@ export async function forEachRow(
   }
 }
 
-export function getAllRows(): T_ROW_WITH_ASSOCIATION[] {
-  const allRows: T_ROW_WITH_ASSOCIATION[] = [];
+export type T_ROW_WITH_ASSOCIATIONS = {
+  row: T_ROW;
+  associations: T_ROW[] | null;
+};
+
+export function getAllRows(): T_ROW_WITH_ASSOCIATIONS[] {
+  const allRows: T_ROW_WITH_ASSOCIATIONS[] = [];
 
   forEachRow(db, (row, associations: T_ROW[] | null) => {
     allRows.push({ row, associations });

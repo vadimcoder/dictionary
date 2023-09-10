@@ -3,21 +3,30 @@ import { T_USE_COLLAPSE_STATE } from "../types";
 
 export function CollapseButton({
   useCollapseState,
+  animate = true,
 }: {
   useCollapseState: T_USE_COLLAPSE_STATE;
+  animate?: boolean;
 }) {
   const [state, setState] = useCollapseState;
 
   function toggle() {
-    if (state.isOpened) {
-      setState({
-        ...state,
-        isClosing: true,
-      });
+    if (animate) {
+      if (state.isOpened) {
+        setState({
+          ...state,
+          isClosing: true,
+        });
+      } else {
+        setState({
+          ...state,
+          isOpened: true,
+        });
+      }
     } else {
       setState({
         ...state,
-        isOpened: true,
+        isOpened: !state.isOpened,
       });
     }
   }

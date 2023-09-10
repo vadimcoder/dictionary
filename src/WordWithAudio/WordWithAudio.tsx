@@ -1,6 +1,6 @@
 import "./style.css";
 import { Player } from "../Player/Player";
-import { T_ROW } from "../types";
+import { T_ROW } from "../db/types";
 
 export function WordWithAudio({ row }: { row: T_ROW }) {
   const word = row[0];

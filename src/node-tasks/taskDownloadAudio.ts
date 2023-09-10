@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import querystring from "querystring";
 import { forEachRow } from "../db/helpers.js";
-import { T_ROW, T_VOCABULARY } from "../types";
+import { T_ROW, T_VOCABULARY } from "../db/types";
 import { readDbFromFile, writeDbToFile } from "./common.js";
 import { wordToFilename } from "../utils.js";
 

@@ -1,0 +1,11 @@
+.TBodyAssociation-opened {
+  border: 1px solid black;
+}
+
+.TBodyAssociation__open-association-button button {
+  background-color: var(--pink-color);
+}
+
+.TBodyAssociation__open-association-button button:hover {
+  background-color: var(--pink-darker-color);
+}

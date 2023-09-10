@@ -1,5 +1,5 @@
 import store from "./store.json" assert { type: "json" };
-import { T_ROW, T_VOCABULARY } from "../types";
+import { T_ROW, T_VOCABULARY } from "./types";
 import { forEachRow } from "./helpers.js";
 import parseISO from "date-fns/parseISO/index.js";
 
