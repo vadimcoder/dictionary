@@ -1,3 +1,4 @@
+import "./style.css";
 import { useGlobalState } from "../../GlobalState/GlobalState";
 import { TBodyAssociation } from "../TBodyAssociation/TBodyAssociation";
 import { prepareData, T_LATEST_TBODY } from "./prepareData";
@@ -9,7 +10,7 @@ export function LatestList() {
   const tBodies: T_LATEST_TBODY[] = prepareData(globalState.lastRowsCount);
 
   return (
-    <table style={{ border: "1px solid transparent" }}>
+    <table className={"LatestList"}>
       {tBodies.map((tBody: T_LATEST_TBODY) =>
         tBody.isAssociation ? (
           <TBodyAssociation tBody={tBody} key={tBody.associationMainRow![0]} />

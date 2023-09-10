@@ -5,4 +5,7 @@
 
   --pink-color: #ffcaf0;
   --pink-darker-color: #ffbcee;
+
+  --form-control-color: pink;
+  --form-control-disabled: lightgray;
 }

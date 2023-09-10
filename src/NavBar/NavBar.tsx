@@ -7,6 +7,7 @@ export function NavBar() {
     <nav>
       <NavLink to={"/"}>All</NavLink>
       <NavLink to={"/latest"}>Latest</NavLink>
+      <NavLink to={"/quiz"}>Quiz</NavLink>
       <DirSwitcher />
     </nav>
   );
