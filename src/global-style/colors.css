@@ -6,6 +6,8 @@
   --pink-color: #ffcaf0;
   --pink-darker-color: #ffbcee;
 
-  --form-control-color: pink;
+  --form-control-color: darkgray;
   --form-control-disabled: lightgray;
+
+  --radius: 0.3em;
 }

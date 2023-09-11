@@ -10,3 +10,8 @@ html {
 h1 {
   font-size: 1.5rem;
 }
+
+input {
+  border: 0.15em solid var(--form-control-color);
+  border-radius: var(--radius);
+}
