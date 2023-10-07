@@ -1,10 +1,10 @@
 :root {
-  --gray-color: #888888;
-  --blue-color: #eeeeff;
-  --blue-2-color: #ddddff;
+  --gray-color: hsl(0, 0%, 53%);
+  --blue-color: hsl(240, 100%, 97%);
+  --blue-2-color: hsl(240deg 100% 94%);
 
-  --pink-color: #ffcaf0;
-  --pink-darker-color: #ffbcee;
+  --pink-color: hsl(315deg 100% 95%);
+  --pink-darker-color: hsl(315deg 100% 80%);
 
   --form-control-color: darkgray;
   --form-control-disabled: lightgray;
