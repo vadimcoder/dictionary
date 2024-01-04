@@ -1,7 +1,7 @@
 import sortBy from "lodash.sortby";
 import last from "lodash.last";
-import { getAllRows, T_ROW_WITH_ASSOCIATIONS } from "../../db/helpers";
-import { T_ROW } from "../../db/types";
+import { getAllRows, T_ROW_WITH_ASSOCIATIONS } from "../../../db/helpers";
+import { T_ROW } from "../../../db/types";
 
 export type T_LATEST_TBODY = {
   isAssociation: boolean;

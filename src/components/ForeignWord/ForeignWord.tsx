@@ -1,5 +1,5 @@
 import "./style.css";
-import { T_ROW } from "../db/types";
+import { T_ROW } from "../../db/types";
 import { CollapseButton } from "../Collapse/CollapseButton/CollapseButton";
 import { T_USE_COLLAPSE_STATE, useCollapseState } from "../Collapse/types";
 import { CollapseArea } from "../Collapse/CollapseArea/CollapseArea";

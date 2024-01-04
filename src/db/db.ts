@@ -1,7 +1,7 @@
 import store from "../_ignore/store.json" assert { type: "json" };
 import { T_ROW, T_VOCABULARY } from "./types";
 import { forEachRow } from "./helpers.js";
-import parseISO from "date-fns/parseISO/index.js";
+import { parseISO } from "date-fns";
 
 export const db = store as T_VOCABULARY;
 

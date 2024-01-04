@@ -1,6 +1,6 @@
 import "./style.css";
 import { useRef } from "react";
-import { wordToFilename } from "../utils";
+import { wordToFilename } from "../../utils";
 
 export function Player({ word }: { word: string }) {
   const audio = useRef<HTMLAudioElement>(null);

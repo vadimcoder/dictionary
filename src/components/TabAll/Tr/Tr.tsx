@@ -1,4 +1,4 @@
-import { T_ROW } from "../../db/types";
+import { T_ROW } from "../../../db/types";
 import { ForeignWord } from "../../ForeignWord/ForeignWord";
 
 export function Tr({

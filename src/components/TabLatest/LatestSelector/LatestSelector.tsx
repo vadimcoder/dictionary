@@ -1,5 +1,5 @@
 import "./style.css";
-import { useGlobalState } from "../../GlobalState/GlobalState";
+import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
 
 const DAYS_AGO_MAX = 200;

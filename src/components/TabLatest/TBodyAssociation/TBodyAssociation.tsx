@@ -1,5 +1,5 @@
 import "./style.css";
-import { T_ROW } from "../../db/types";
+import { T_ROW } from "../../../db/types";
 import { WordWithAudio } from "../../WordWithAudio/WordWithAudio";
 import { CollapseButton } from "../../Collapse/CollapseButton/CollapseButton";
 import { CollapseArea } from "../../Collapse/CollapseArea/CollapseArea";

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { T_GROUP, T_SUBGROUP, T_ROW } from "../db/types";
+import { T_GROUP, T_SUBGROUP, T_ROW } from "../../db/types";
 import { Tr } from "./Tr/Tr";
-import { db } from "../db/db";
+import { db } from "../../db/db";
 
 function Associations({ rows }: { rows: T_ROW[] }) {
   return (

@@ -1,5 +1,5 @@
 import { ForeignWord } from "../ForeignWord/ForeignWord";
-import { T_ROW } from "../db/types";
+import { T_ROW } from "../../db/types";
 
 export function TrSimple({ row }: { row: T_ROW }) {
   return (

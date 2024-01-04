@@ -1,5 +1,5 @@
 import "./style.css";
-import { useGlobalState } from "../../GlobalState/GlobalState";
+import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { TBodyAssociation } from "../TBodyAssociation/TBodyAssociation";
 import { prepareData, T_LATEST_TBODY } from "./prepareData";
 import { TBodySimple } from "../TBodySimple/TBodySimple";

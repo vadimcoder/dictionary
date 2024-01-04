@@ -1,10 +1,10 @@
 import "./style.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { GlobalState } from "../GlobalState/GlobalState";
-import { NavBar } from "../NavBar/NavBar";
-import { All } from "../TabAll/All";
-import { TabLatest } from "../TabLatest/TabLatest";
-import { TabQuiz } from "../TabQuiz/TabQuiz";
+import { NavBar } from "../components/NavBar/NavBar";
+import { All } from "../components/TabAll/All";
+import { TabLatest } from "../components/TabLatest/TabLatest";
+import { TabQuiz } from "../components/TabQuiz/TabQuiz";
 
 export function App() {
   return (
