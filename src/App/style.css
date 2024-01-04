@@ -1,5 +1,13 @@
+body {
+  margin: 0;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+main {
+  margin: 8px;
 }

@@ -108,3 +108,5 @@ dist/*
 .idea
 
 compiled
+public/audio
+src/_ignore
