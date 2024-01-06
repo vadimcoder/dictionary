@@ -1,12 +1,12 @@
 import { LatestSelector } from "./LatestSelector/LatestSelector";
-import { LatestList } from "./LatestList/LatestList";
+import { LatestListSection } from "./LatestListSection";
 
 export function TabLatest() {
   return (
     <div className={"TabLatest"}>
       <LatestSelector />
 
-      <LatestList />
+      <LatestListSection />
     </div>
   );
 }

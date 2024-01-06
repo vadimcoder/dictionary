@@ -1,13 +1,19 @@
-import "./style.css";
-import { useGlobalState } from "../../../GlobalState/GlobalState";
+import { T_ROW_WITH_ASSOCIATIONS } from "../../../db/helpers";
+import { getRowsDividedByTBodies, T_LATEST_TBODY } from "./prepareData";
 import { TBodyAssociation } from "../TBodyAssociation/TBodyAssociation";
-import { prepareData, T_LATEST_TBODY } from "./prepareData";
 import { TBodySimple } from "../TBodySimple/TBodySimple";
+import { useGlobalState } from "../../../GlobalState/GlobalState";
 
-export function LatestList() {
+export function LatestList({
+  sortedRows,
+}: {
+  sortedRows: T_ROW_WITH_ASSOCIATIONS[];
+}) {
   const [globalState] = useGlobalState();
-
-  const tBodies: T_LATEST_TBODY[] = prepareData(globalState.lastRowsCount);
+  const tBodies: T_LATEST_TBODY[] = getRowsDividedByTBodies(
+    sortedRows,
+    globalState.lastRowsCount,
+  );
 
   return (
     <table className={"LatestList"}>

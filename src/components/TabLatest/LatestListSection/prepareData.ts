@@ -1,6 +1,5 @@
-import sortBy from "lodash.sortby";
 import last from "lodash.last";
-import { getAllRows, T_ROW_WITH_ASSOCIATIONS } from "../../../db/helpers";
+import { T_ROW_WITH_ASSOCIATIONS } from "../../../db/helpers";
 import { T_ROW } from "../../../db/types";
 
 export type T_LATEST_TBODY = {
@@ -9,41 +8,21 @@ export type T_LATEST_TBODY = {
   rows: T_ROW[];
 };
 
-export function prepareData(lastRowsCount: number): T_LATEST_TBODY[] {
-  let rows: T_ROW_WITH_ASSOCIATIONS[] = getAllRows();
-
-  rows = getSortedRows(rows);
-
-  rows = getLastRows(rows, lastRowsCount);
-
-  return getRowsDividedByTBodies(rows);
-}
-
-function getSortedRows(
-  rows: T_ROW_WITH_ASSOCIATIONS[],
-): T_ROW_WITH_ASSOCIATIONS[] {
-  return sortBy(rows, (row: T_ROW_WITH_ASSOCIATIONS) => row.row[3]);
-}
-
-function getLastRows(
+export function getRowsDividedByTBodies(
   rows: T_ROW_WITH_ASSOCIATIONS[],
   lastRowsCount: number,
-): T_ROW_WITH_ASSOCIATIONS[] {
-  return rows.slice(-lastRowsCount);
-}
-
-function getRowsDividedByTBodies(
-  rows: T_ROW_WITH_ASSOCIATIONS[],
 ): T_LATEST_TBODY[] {
   const tBodies: T_LATEST_TBODY[] = [];
 
-  rows.forEach(({ row, associations }) => {
+  for (let i = 0; i < lastRowsCount; ++i) {
+    const { row, associations } = rows[i];
+
     if (associations) {
       pushAssociations(tBodies, row, associations);
     } else {
       pushSingleRow(tBodies, row);
     }
-  });
+  }
 
   return tBodies;
 }

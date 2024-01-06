@@ -5,7 +5,7 @@ import { CollapseButton } from "../../Collapse/CollapseButton/CollapseButton";
 import { CollapseArea } from "../../Collapse/CollapseArea/CollapseArea";
 import { T_USE_COLLAPSE_STATE, useCollapseState } from "../../Collapse/types";
 import { TrSimple } from "../TrSimple";
-import { T_LATEST_TBODY } from "../LatestList/prepareData";
+import { T_LATEST_TBODY } from "../LatestListSection/prepareData";
 
 export function TBodyAssociation({ tBody }: { tBody: T_LATEST_TBODY }) {
   const collapseStateLinks: T_USE_COLLAPSE_STATE = useCollapseState();

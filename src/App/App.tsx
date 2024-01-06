@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { GlobalState } from "../GlobalState/GlobalState";
 import { NavBar } from "../components/NavBar/NavBar";
 import { All } from "../components/TabAll/All";
-import { TabLatest } from "../components/TabLatest/TabLatest";
+import { TabLatest } from "../components/TabLatest";
 import { TabQuiz } from "../components/TabQuiz/TabQuiz";
 
 export function App() {

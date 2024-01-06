@@ -15,16 +15,16 @@
   "dependencies": {
     "date-fns": "^3.0.6",
     "lodash.last": "^3.0.0",
+    "lodash.orderby": "^4.6.0",
     "lodash.random": "^3.2.0",
-    "lodash.sortby": "^4.7.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@types/lodash.last": "^3.0.9",
+    "@types/lodash.orderby": "^4.6.9",
     "@types/lodash.random": "^3.2.9",
-    "@types/lodash.sortby": "^4.7.9",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.17.0",

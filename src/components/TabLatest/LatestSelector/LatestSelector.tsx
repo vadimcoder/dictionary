@@ -10,10 +10,10 @@ export function LatestSelector() {
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     const value = parseInt(event.target.value);
 
-    setGlobalState({
-      ...globalState,
+    setGlobalState((oldState) => ({
+      ...oldState,
       lastRowsCount: value,
-    });
+    }));
   }
 
   return (
