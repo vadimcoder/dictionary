@@ -10,7 +10,8 @@ import {
 import { getStoredState, storeState } from "./helpers";
 
 export type T_GLOBAL_STATE = {
-  lastRowsCount: number;
+  latestLastRowsCount: number;
+  quizLastRowsCount: number;
 };
 
 type T_USE_GLOBAL_STATE = [
@@ -18,8 +19,9 @@ type T_USE_GLOBAL_STATE = [
   Dispatch<SetStateAction<T_GLOBAL_STATE>>,
 ];
 
-const DEFAULT_STATE = {
-  lastRowsCount: 20,
+const DEFAULT_STATE: T_GLOBAL_STATE = {
+  latestLastRowsCount: 20,
+  quizLastRowsCount: 20,
 };
 
 const DEFAULT_USE_GLOBAL_STATE: T_USE_GLOBAL_STATE = [

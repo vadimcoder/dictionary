@@ -9,14 +9,16 @@
     "lint-auto-fix": "eslint . --ext ts,tsx --report-unused-disable-directives --fix",
     "preview": "vite preview",
     "dist-clean": "rm -fr dist/*",
-    "ts-node": "ts-node",
-    "node-tasks": "rm -fr compiled && tsc && node compiled/node-tasks/run.js"
+    "ts-node": "ts-node --esm src/node-tasks/run.ts",
+    "node-tasks": "rm -fr compiled && tsc && node compiled/dictionary/src/node-tasks/run.js"
   },
   "dependencies": {
     "date-fns": "^3.0.6",
     "lodash.last": "^3.0.0",
     "lodash.orderby": "^4.6.0",
     "lodash.random": "^3.2.0",
+    "lodash.shuffle": "^4.2.0",
+    "lodash.uniq": "^4.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.21.1"
@@ -25,6 +27,8 @@
     "@types/lodash.last": "^3.0.9",
     "@types/lodash.orderby": "^4.6.9",
     "@types/lodash.random": "^3.2.9",
+    "@types/lodash.shuffle": "^4.2.9",
+    "@types/lodash.uniq": "^4.5.9",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.17.0",

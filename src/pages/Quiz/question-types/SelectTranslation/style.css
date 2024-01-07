@@ -1,0 +1,8 @@
+.SelectTranslation {
+  margin-block-start: 20px;
+  margin-inline-start: 10vw;
+}
+
+.SelectTranslation__item {
+  margin-block-start: 30px;
+}

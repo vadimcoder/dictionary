@@ -29,3 +29,9 @@ input {
   border: 0.15em solid var(--form-control-color);
   border-radius: var(--radius);
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

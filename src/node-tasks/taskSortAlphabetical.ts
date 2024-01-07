@@ -1,21 +1,25 @@
 import { readDbFromFile, writeDbToFile } from "./common.js";
-import { T_ROW, T_SUBGROUP, T_VOCABULARY } from "../db/types";
-import { forEachSubgroup } from "../db/helpers.js";
 import { ALPHABETICAL } from "../db/constants.js";
-import sortBy from "lodash.sortby";
+import orderBy from "lodash.orderby";
+import { T_DICTIONARY, T_GROUP, T_ROW } from "../types/dictionary";
 
-function sortAlphabetical(db: T_VOCABULARY) {
-  forEachSubgroup(db, (subgroup: T_SUBGROUP) => {
-    if (subgroup.subgroupName === ALPHABETICAL) {
-      subgroup.rows = sortBy(subgroup.rows as T_ROW[], (row: T_ROW) => row[0]);
-    }
+function sortAlphabetical(dictionary: T_DICTIONARY<T_ROW>) {
+  dictionary.forEach(({ subgroups }: T_GROUP<T_ROW>) => {
+    subgroups.forEach((subgroup) => {
+      if (subgroup.subgroupName === ALPHABETICAL) {
+        subgroup.rows = orderBy(
+          subgroup.rows,
+          (row) => row.words[0].foreignWord,
+        );
+      }
+    });
   });
 }
 
 export async function taskSortAlphabetical() {
-  const db: T_VOCABULARY = readDbFromFile();
+  const dictionary: T_DICTIONARY<T_ROW> = readDbFromFile();
 
-  sortAlphabetical(db);
+  sortAlphabetical(dictionary);
 
-  await writeDbToFile(db);
+  await writeDbToFile(dictionary);
 }

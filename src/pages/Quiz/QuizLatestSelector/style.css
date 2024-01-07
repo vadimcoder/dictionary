@@ -1,0 +1,16 @@
+.QuizLatestSelector {
+  display: flex;
+  gap: 30px;
+  height: 100px;
+  align-items: center;
+  border: 1px solid var(--form-control-color);
+  border-radius: var(--radius);
+  padding-inline-start: 10px;
+}
+
+.QuizLatestSelector__input {
+  width: 70px;
+  height: 50px;
+  font-size: 0.8rem;
+  padding-inline-start: 4px;
+}

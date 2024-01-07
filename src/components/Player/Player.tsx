@@ -2,7 +2,7 @@ import "./style.css";
 import { useRef } from "react";
 import { wordToFilename } from "../../utils";
 
-export function Player({ word }: { word: string }) {
+export function Player({ foreignWord }: { foreignWord: string }) {
   const audio = useRef<HTMLAudioElement>(null);
 
   function play() {
@@ -12,7 +12,7 @@ export function Player({ word }: { word: string }) {
   return (
     <div className={"player"}>
       <audio
-        src={`audio/${wordToFilename(word)}.mp3`}
+        src={`audio/${wordToFilename(foreignWord)}.mp3`}
         preload="none"
         ref={audio}
       />

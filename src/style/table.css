@@ -2,18 +2,8 @@ table {
   border-collapse: collapse;
 }
 
-.subgroup {
-  padding-top: 20px;
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-
 tr {
   border-bottom: 1px dotted lightgray;
-}
-
-tr.solid-border {
-  border-bottom: 1px solid black;
 }
 
 td {

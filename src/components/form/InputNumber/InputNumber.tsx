@@ -2,23 +2,23 @@ import "./style.css";
 
 export function InputNumber({
   value,
-  setValue,
+  onChange,
   className,
 }: {
   value: number;
-  setValue: (value: number) => void;
+  onChange: (value: number) => void;
   className: string;
 }) {
   return (
     <input
       value={value}
       onChange={({ target: { value } }) => {
-        const parsed = parseInt(value);
+        const parsed = parseInt(value, 10);
 
         if (Number.isNaN(parsed)) {
-          setValue(0);
+          onChange(0);
         } else {
-          setValue(parseInt(value));
+          onChange(parseInt(value));
         }
       }}
       type="number"

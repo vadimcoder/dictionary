@@ -1,22 +1,19 @@
 import "./style.css";
 import { Player } from "../Player/Player";
-import { T_ROW } from "../../db/types";
+import { T_WORD } from "../../types/dictionary";
 
-export function WordWithAudio({ row }: { row: T_ROW }) {
-  const word = row[0];
-  const dateAdded = row[3];
-
+export function WordWithAudio({ word }: { word: T_WORD }) {
   return (
     <div className={"WordWithAudio"}>
-      <Player word={word} />
+      <Player foreignWord={word.foreignWord} />
       <a
         className={"WordWithAudio__link"}
         target={"_blank"}
-        href={`https://translate.google.com/details?sl=en&tl=ru&text=${word}&op=translate`}
+        href={`https://translate.google.com/details?sl=en&tl=ru&text=${word.foreignWord}&op=translate`}
         rel="noreferrer"
-        title={dateAdded.toString()}
+        title={word.dateAdded.toString()}
       >
-        {word}
+        {word.foreignWord}
       </a>
     </div>
   );
