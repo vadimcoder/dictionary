@@ -13,7 +13,7 @@
     "node-tasks": "rm -fr compiled && tsc && node compiled/dictionary/src/node-tasks/run.js"
   },
   "dependencies": {
-    "date-fns": "^3.0.6",
+    "date-fns": "^3.2.0",
     "lodash.last": "^3.0.0",
     "lodash.orderby": "^4.6.0",
     "lodash.random": "^3.2.0",
@@ -21,7 +21,8 @@
     "lodash.uniq": "^4.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/lodash.last": "^3.0.9",
@@ -29,19 +30,19 @@
     "@types/lodash.random": "^3.2.9",
     "@types/lodash.shuffle": "^4.2.9",
     "@types/lodash.uniq": "^4.5.9",
-    "@types/react": "^18.2.46",
+    "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "vite": "^5.0.11"
   }
 }
