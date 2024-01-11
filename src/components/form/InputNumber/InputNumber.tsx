@@ -1,31 +1,28 @@
+import { VARIANT_NUMBER } from "../../../pages/Quiz/question-types/questionType";
 import "./style.css";
 
 export function InputNumber({
   value,
   onChange,
-  className,
 }: {
   value: number;
   onChange: (value: number) => void;
-  className: string;
 }) {
   return (
-    <input
-      value={value}
-      onChange={({ target: { value } }) => {
-        const parsed = parseInt(value, 10);
+    <div className={"InputNumber"}>
+      <button
+        type={"button"}
+        onClick={() => onChange(value - 1)}
+        disabled={value <= VARIANT_NUMBER}
+      >
+        &lt;
+      </button>
 
-        if (Number.isNaN(parsed)) {
-          onChange(0);
-        } else {
-          onChange(parseInt(value));
-        }
-      }}
-      type="number"
-      min="0"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      className={className}
-    />
+      {value}
+
+      <button type={"button"} onClick={() => onChange(value + 1)}>
+        &gt;
+      </button>
+    </div>
   );
 }

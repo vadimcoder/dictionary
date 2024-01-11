@@ -1,11 +1,10 @@
 import { ChangeEvent, useMemo, useState } from "react";
-import { T_WORD_WITH_ASSOCIATIONS } from "../../../../types/dictionary";
 import shuffle from "lodash.shuffle";
+import { T_WORD_WITH_ASSOCIATIONS } from "../../../../types/dictionary";
 import { getRandomItem } from "../../../../utils";
 import { WordWithAudio } from "../../../../components/WordWithAudio/WordWithAudio";
+import { VARIANT_NUMBER } from "../questionType";
 import "./style.css";
-
-const VARIANT_NUMBER = 4;
 
 function getVariants(
   row: T_WORD_WITH_ASSOCIATIONS,

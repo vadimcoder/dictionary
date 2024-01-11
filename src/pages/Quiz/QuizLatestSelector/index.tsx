@@ -23,7 +23,6 @@ export function QuizLatestSelector() {
         <InputNumber
           value={globalState.quizLastRowsCount}
           onChange={onChange}
-          className={"QuizLatestSelector__input"}
         />
       )}
     </div>

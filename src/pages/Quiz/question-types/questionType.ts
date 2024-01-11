@@ -18,3 +18,5 @@ export function getRandomQuestionType() {
     QUESTION_TYPE.SELECT_TRANSLATION,
   ][random(0, 4)];
 }
+
+export const VARIANT_NUMBER = 4;

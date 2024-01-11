@@ -1,13 +1,13 @@
+import { useState } from "react";
 import {
   getRandomQuestionType,
   QUESTION_TYPE,
 } from "../question-types/questionType";
-import { useState } from "react";
 import { T_WORD_WITH_ASSOCIATIONS } from "../../../types/dictionary";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { DB } from "../../../db/db";
 import { SelectTranslation } from "../question-types/SelectTranslation";
-import { getRandomItem } from "../../../utils";
+import { NextRowSelector } from "./NextRowSelector";
 
 type QUIZ_STATE = {
   questionType: QUESTION_TYPE;
@@ -15,15 +15,17 @@ type QUIZ_STATE = {
   lastRows: T_WORD_WITH_ASSOCIATIONS[];
 };
 
+const nextRowSelector = new NextRowSelector();
+
 export function QuizMain() {
-  const [globalState] = useGlobalState();
-  const [quizState, setQuizState] = useState<QUIZ_STATE>(getNextQuizState());
+  const { quizLastRowsCount } = useGlobalState()[0];
+  const [quizState, setQuizState] = useState<QUIZ_STATE>(getNextQuizState);
 
   function getNextQuizState(): QUIZ_STATE {
     return {
       questionType: getRandomQuestionType(),
-      row: getRandomItem(DB.getLastRows(globalState.quizLastRowsCount)),
-      lastRows: DB.getLastRows(globalState.quizLastRowsCount),
+      row: nextRowSelector.get(quizLastRowsCount),
+      lastRows: DB.getLastRows(quizLastRowsCount),
     };
   }
 
