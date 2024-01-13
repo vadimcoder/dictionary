@@ -25,12 +25,25 @@ export const DB: T_DB = {
   },
 };
 
+function getDateAdded(word: T_ROW_RAW): Date {
+  let date: Date;
+
+  try {
+    date = parseISO(word[3]);
+  } catch (e) {
+    console.log("Cannot parse as date:", word);
+    date = new Date();
+  }
+
+  return date;
+}
+
 function deserializeWord(word: T_ROW_RAW): T_WORD {
   return {
     foreignWord: word[0],
     transcription: word[1],
     translation: word[2],
-    dateAdded: parseISO(word[3]),
+    dateAdded: getDateAdded(word),
     isAudioAvailable: word[4],
   };
 }
