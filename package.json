@@ -9,9 +9,7 @@
     "lint-auto-fix": "eslint . --ext ts,tsx --report-unused-disable-directives --fix",
     "preview": "vite preview",
     "dist-clean": "rm -fr dist/*",
-    "node-tasks-all": "ts-node --esm src/node-tasks/all.ts",
-    "node-tasks-download": "ts-node --esm src/node-tasks/taskDownloadAudio.ts",
-    "node-tasks-sort": "ts-node --esm src/node-tasks/taskSortAlphabetical.ts",
+    "node-tasks": "ts-node --esm src/node-tasks/run.ts",
     "node-tasks-old": "rm -fr compiled && tsc && node compiled/dictionary/src/node-tasks/all.js"
   },
   "dependencies": {
