@@ -17,7 +17,7 @@ export function Styleguide() {
   return (
     <div className={"Styleguide__colors"}>
       {colors.map((color) => (
-        <div>
+        <div key={color}>
           <div
             className={"ColorBox"}
             style={{ backgroundColor: `var(--color-${color})` }}
