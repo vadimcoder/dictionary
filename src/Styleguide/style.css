@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 140px 140px 140px 140px;
   grid-auto-rows: 140px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .ColorBox {
