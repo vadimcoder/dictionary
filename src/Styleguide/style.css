@@ -1,0 +1,11 @@
+.Styleguide__colors {
+  display: grid;
+  grid-template-columns: 140px 140px 140px 140px;
+  grid-auto-rows: 140px;
+  font-size: 12px;
+}
+
+.ColorBox {
+  width: 100px;
+  height: 100px;
+}

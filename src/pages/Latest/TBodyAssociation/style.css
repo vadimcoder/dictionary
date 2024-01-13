@@ -3,9 +3,9 @@
 }
 
 .TBodyAssociation__open-association-button button {
-  background-color: var(--pink-color);
+  background-color: var(--color-pink);
 }
 
 .TBodyAssociation__open-association-button button:hover {
-  background-color: var(--pink-darker-color);
+  background-color: var(--color-pink-darker);
 }

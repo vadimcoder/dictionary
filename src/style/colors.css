@@ -1,13 +1,19 @@
 :root {
-  --gray-color: hsl(0, 0%, 53%);
-  --blue-color: hsl(240, 100%, 97%);
-  --blue-2-color: hsl(240deg 100% 94%);
+  --color-blue: hsl(240, 100%, 97%);
+  --color-blue-2: hsl(240deg 100% 94%);
 
-  --pink-color: hsl(315deg 100% 95%);
-  --pink-darker-color: hsl(315deg 100% 80%);
+  --color-pink: hsl(315deg 100% 95%);
+  --color-pink-darker: hsl(315deg 100% 80%);
 
-  --form-control-color: darkgray;
-  --form-control-disabled: lightgray;
+  --color-form-control: hsl(0, 0%, 53%);
+  --color-form-control-disabled: lightgray;
+
+  --color-red: red;
+  --color-red-softer: hsl(0 100% 95%);
+
+  --color-green: green;
+  --color-green-softer: hsl(100 100% 95%);
+
 
   --radius: 0.3em;
 }

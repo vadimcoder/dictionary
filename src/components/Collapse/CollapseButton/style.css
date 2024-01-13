@@ -1,5 +1,5 @@
 .CollapsibleButton {
-  background-color: var(--blue-color);
+  background-color: var(--color-blue);
   border: none;
   border-radius: 100px;
   padding: 4px;
@@ -9,7 +9,7 @@
 }
 
 .CollapsibleButton:hover {
-  background-color: var(--blue-2-color);
+  background-color: var(--color-blue-2);
 }
 
 .CollapsibleButton:active {

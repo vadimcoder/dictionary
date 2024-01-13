@@ -33,6 +33,7 @@ export function SelectTranslation({
   lastRows: T_WORD_WITH_ASSOCIATIONS[];
 }) {
   const [answer, setAnswer] = useState<string>();
+  const isCorrect = answer === row.word.translation;
 
   const variants = useMemo(() => getVariants(row, lastRows), []);
 
@@ -44,18 +45,35 @@ export function SelectTranslation({
     }
   }
 
+  function isChecked(variant: string) {
+    return variant === answer;
+  }
+
+  function getModifier(variant: string) {
+    if (isChecked(variant)) {
+      return `SelectTranslationVariant_${isCorrect ? "correct" : "incorrect"}`;
+    }
+
+    return "";
+  }
+
   return (
     <div className={"SelectTranslation"}>
       <WordWithAudio word={row.word} />
 
       <ul>
         {variants.map((variant) => (
-          <li key={variant} className={"SelectTranslation__item"}>
+          <li
+            key={variant}
+            className={`SelectTranslation__variant SelectTranslationVariant ${getModifier(
+              variant,
+            )}`}
+          >
             <label>
               <input
                 type={"radio"}
                 value={variant}
-                checked={variant === answer}
+                checked={isChecked(variant)}
                 onChange={onChange}
               />{" "}
               {variant}

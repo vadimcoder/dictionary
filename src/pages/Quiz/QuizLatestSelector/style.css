@@ -3,7 +3,7 @@
   grid-template-columns: 100px 1fr;
   padding: 10px;
 
-  border: 1px solid var(--form-control-color);
+  border: 1px solid var(--color-form-control);
   border-radius: var(--radius);
   padding-inline-start: 10px;
 }
