@@ -1,0 +1,16 @@
+.WordWithLinks__word {
+    cursor: pointer;
+
+}
+.WordWithLinks__word:hover {
+    background-color: var(--color-blue);
+    border-radius: var(--radius);
+}
+
+.WordWithLinks__popover {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    outline: none;
+    border-radius: var(--radius);
+}

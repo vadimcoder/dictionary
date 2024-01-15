@@ -1,7 +1,7 @@
 import "./style.css";
 import { CollapseButton } from "../../../components/Collapse/CollapseButton/CollapseButton";
 import { T_USE_COLLAPSE_STATE } from "../../../components/Collapse/types";
-import { TrSimple } from "../TrSimple";
+import { Tr } from "../../../components/Tr";
 import { T_RECORD, T_LAST_RECORD } from "../../../db/types";
 import { Record } from "../../../components/Record";
 import { useCollapseState } from "../../../components/Collapse/useCollapseState";
@@ -20,8 +20,8 @@ export function TBodyAssociation({
       }`}
     >
       <tr>
-        <td>
-          <div className={"ForeignWord__top"}>
+        <td {...(lastRecord.record.irregularVerb && { colSpan: 2 })}>
+          <div className={"TBodyAssociation__cell"}>
             <Record record={lastRecord.record} />
 
             <div className={"TBodyAssociation__open-association-button"}>
@@ -32,13 +32,15 @@ export function TBodyAssociation({
             </div>
           </div>
         </td>
-        <td>{lastRecord.record.wordSet.transcription}</td>
+        {!lastRecord.record.irregularVerb && (
+          <td>{lastRecord.record.wordSet.transcription}</td>
+        )}
         <td>{lastRecord.record.translation}</td>
       </tr>
 
       {collapseStateAssociations[0].isOpened &&
         lastRecord.associationsExcludingTheRecord.map((record: T_RECORD) => (
-          <TrSimple record={record} key={record.wordSet.word} />
+          <Tr record={record} key={record.wordSet.word} />
         ))}
     </tbody>
   );

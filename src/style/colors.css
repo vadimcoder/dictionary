@@ -2,8 +2,7 @@
   --color-blue: hsl(240, 100%, 97%);
   --color-blue-2: hsl(240deg 100% 94%);
 
-  --color-pink: hsl(315deg 100% 95%);
-  --color-pink-darker: hsl(315deg 100% 80%);
+  --color-pink: hsl(315deg 100% 80%);
 
   --color-form-control: hsl(0, 0%, 53%);
   --color-form-control-disabled: lightgray;

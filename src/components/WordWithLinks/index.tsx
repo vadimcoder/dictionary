@@ -1,21 +1,26 @@
 import "./style.css";
-import { useState } from "react";
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
-  shift,
-  useDismiss,
-  useRole,
-  useClick,
-  useInteractions,
   FloatingFocusManager,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
   useId,
+  useInteractions,
+  useRole,
 } from "@floating-ui/react";
-import { Player } from "../Player/Player";
+import { useState } from "react";
 
-export function Word({ word, dateAdded }: { word: string; dateAdded: Date }) {
+export function WordWithLinks({
+  word,
+  dateAdded,
+}: {
+  word: string;
+  dateAdded: Date;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
@@ -43,13 +48,12 @@ export function Word({ word, dateAdded }: { word: string; dateAdded: Date }) {
   const headingId = useId();
 
   return (
-    <div className={"ForeignWord"}>
-      <Player word={word} />
-
+    <>
       <span
         ref={refs.setReference}
         {...getReferenceProps()}
         title={dateAdded.toString()}
+        className={"WordWithLinks__word"}
       >
         {word}
       </span>
@@ -57,7 +61,7 @@ export function Word({ word, dateAdded }: { word: string; dateAdded: Date }) {
       {isOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div
-            className="ForeignWordPopover"
+            className="WordWithLinks__popover"
             ref={refs.setFloating}
             style={floatingStyles}
             aria-labelledby={headingId}
@@ -89,6 +93,6 @@ export function Word({ word, dateAdded }: { word: string; dateAdded: Date }) {
           </div>
         </FloatingFocusManager>
       )}
-    </div>
+    </>
   );
 }

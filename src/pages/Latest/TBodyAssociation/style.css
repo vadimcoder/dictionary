@@ -2,10 +2,8 @@
   border: 1px solid black;
 }
 
-.TBodyAssociation__open-association-button button {
-  background-color: var(--color-pink);
-}
-
-.TBodyAssociation__open-association-button button:hover {
-  background-color: var(--color-pink-darker);
+.TBodyAssociation__cell {
+  display: flex;
+  justify-content: space-between;
+  margin-inline-end: 10px;
 }

@@ -1,7 +1,7 @@
-import { TBodyAssociation } from "../TBodyAssociation/TBodyAssociation";
+import { TBodyAssociation } from "../TBodyAssociation";
 import { DB } from "../../../db/db";
 import { T_LAST_RECORD } from "../../../db/types";
-import { TrSimple } from "../TrSimple";
+import { Tr } from "../../../components/Tr";
 import "./style.css";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 
@@ -22,7 +22,7 @@ export function LatestList() {
               className={"TBodySimple"}
               key={lastRecord.record.wordSet.word}
             >
-              <TrSimple record={lastRecord.record} />
+              <Tr record={lastRecord.record} />
             </tbody>
           ),
       )}

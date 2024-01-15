@@ -1,5 +1,5 @@
 import { IrregularVerbs } from "../IrregularVerbs";
-import { Word } from "../Word/Word";
+import { Word } from "../Word";
 import { T_RECORD } from "../../db/types";
 
 export function Record({ record }: { record: T_RECORD }) {

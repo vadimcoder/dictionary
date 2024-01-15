@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { GlobalState } from "../GlobalState/GlobalState";
 import { NavBar } from "../components/NavBar/NavBar";
-import { All } from "../pages/All/All";
+import { All } from "../pages/All";
 import { Latest } from "../pages/Latest";
 import { Quiz } from "../pages/Quiz";
 import "./style.css";

@@ -5,7 +5,6 @@ export function Styleguide() {
     "blue",
     "blue-2",
     "pink",
-    "pink-darker",
     "form-control",
     "form-control-disabled",
     "red",

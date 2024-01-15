@@ -1,8 +1,8 @@
-import { Fragment } from "react";
 import "./style.css";
-import { Tr } from "./Tr";
+import { Fragment } from "react";
 import { DB } from "../../db/db";
 import { T_GROUP, T_ROW, T_SUBGROUP, T_RECORD } from "../../db/types";
+import { Tr } from "../../components/Tr";
 
 function Associations({ records }: { records: T_RECORD[] }) {
   return (
@@ -15,8 +15,6 @@ function Associations({ records }: { records: T_RECORD[] }) {
           <Tr
             key={record.wordSet.word}
             record={record}
-            // words={words}
-            index={index}
             isBorderBottom={isBorderBottom}
           />
         );
@@ -26,21 +24,14 @@ function Associations({ records }: { records: T_RECORD[] }) {
 }
 
 function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROW> }) {
-  const subgroupItems = subgroupItem.rows.map((row, index) => {
+  const subgroupItems = subgroupItem.rows.map((row) => {
     if (row.isAssociation) {
       return (
         <Associations key={row.records[0].wordSet.word} records={row.records} />
       );
     }
 
-    return (
-      <Tr
-        key={row.records[0].wordSet.word}
-        record={row.records[0]}
-        rows={subgroupItem.rows}
-        index={index}
-      />
-    );
+    return <Tr key={row.records[0].wordSet.word} record={row.records[0]} />;
   });
 
   return (
