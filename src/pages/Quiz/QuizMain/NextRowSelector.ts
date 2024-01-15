@@ -1,16 +1,18 @@
 import { getRandomItem } from "../../../utils";
 import { DB } from "../../../db/db";
-import { T_WORD_WITH_ASSOCIATIONS } from "../../../types/dictionary";
+import { T_LAST_RECORD } from "../../../db/types";
 
 export class NextRowSelector {
-  #lastRow: T_WORD_WITH_ASSOCIATIONS | null = null;
+  #lastRow: T_LAST_RECORD | null = null;
 
   get(quizLastRowsCount: number) {
-    let nextRow: T_WORD_WITH_ASSOCIATIONS;
+    let nextRow: T_LAST_RECORD;
 
     do {
       nextRow = getRandomItem(DB.getLastRows(quizLastRowsCount));
-    } while (nextRow.word.foreignWord === this.#lastRow?.word.foreignWord);
+    } while (
+      nextRow.record.wordSet.word === this.#lastRow?.record.wordSet.word
+    );
 
     this.#lastRow = nextRow;
 

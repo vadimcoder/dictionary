@@ -1,16 +1,16 @@
 import "./style.css";
-import { WordWithAudio } from "../../../components/WordWithAudio/WordWithAudio";
 import { CollapseButton } from "../../../components/Collapse/CollapseButton/CollapseButton";
-import { CollapseArea } from "../../../components/Collapse/CollapseArea/CollapseArea";
-import {
-  T_USE_COLLAPSE_STATE,
-  useCollapseState,
-} from "../../../components/Collapse/types";
+import { T_USE_COLLAPSE_STATE } from "../../../components/Collapse/types";
 import { TrSimple } from "../TrSimple";
-import { T_WORD, T_WORD_WITH_ASSOCIATIONS } from "../../../types/dictionary";
+import { T_RECORD, T_LAST_RECORD } from "../../../db/types";
+import { Record } from "../../../components/Record";
+import { useCollapseState } from "../../../components/Collapse/useCollapseState";
 
-export function TBodyAssociation({ row }: { row: T_WORD_WITH_ASSOCIATIONS }) {
-  const collapseStateLinks: T_USE_COLLAPSE_STATE = useCollapseState();
+export function TBodyAssociation({
+  lastRecord,
+}: {
+  lastRecord: T_LAST_RECORD;
+}) {
   const collapseStateAssociations: T_USE_COLLAPSE_STATE = useCollapseState();
 
   return (
@@ -22,31 +22,23 @@ export function TBodyAssociation({ row }: { row: T_WORD_WITH_ASSOCIATIONS }) {
       <tr>
         <td>
           <div className={"ForeignWord__top"}>
-            <WordWithAudio word={row.word} />
+            <Record record={lastRecord.record} />
 
-            <div className={"CollapseButtonsInTable"}>
-              <div className={"TBodyAssociation__open-association-button"}>
-                <CollapseButton
-                  useCollapseState={collapseStateAssociations}
-                  animate={false}
-                />
-              </div>
-              <CollapseButton useCollapseState={collapseStateLinks} />
+            <div className={"TBodyAssociation__open-association-button"}>
+              <CollapseButton
+                useCollapseState={collapseStateAssociations}
+                animate={false}
+              />
             </div>
           </div>
-
-          <CollapseArea
-            foreignWord={row.word.foreignWord}
-            useCollapseState={collapseStateLinks}
-          />
         </td>
-        <td>{row.word.transcription}</td>
-        <td>{row.word.translation}</td>
+        <td>{lastRecord.record.wordSet.transcription}</td>
+        <td>{lastRecord.record.translation}</td>
       </tr>
 
       {collapseStateAssociations[0].isOpened &&
-        row.associationsExcludingTheWord.map((word: T_WORD) => (
-          <TrSimple word={word} key={word.foreignWord} />
+        lastRecord.associationsExcludingTheRecord.map((record: T_RECORD) => (
+          <TrSimple record={record} key={record.wordSet.word} />
         ))}
     </tbody>
   );

@@ -6,7 +6,7 @@ import { All } from "../pages/All/All";
 import { Latest } from "../pages/Latest";
 import { Quiz } from "../pages/Quiz";
 import "./style.css";
-import { Styleguide } from "../Styleguide";
+import { Dev } from "../pages/Dev";
 
 export function App() {
   return (
@@ -21,7 +21,7 @@ export function App() {
                 <Route path={"/"} Component={All} />
                 <Route path={"/latest"} Component={Latest} />
                 <Route path={"/quiz"} Component={Quiz} />
-                <Route path={"/styleguide"} Component={Styleguide} />
+                <Route path={"/dev"} Component={Dev} />
 
                 <Route path="*" element={<Navigate to={"/"} />} />
               </Routes>

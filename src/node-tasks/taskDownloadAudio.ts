@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import querystring from "querystring";
 import { asyncForEach, readDbFromFile, writeDbToFile } from "./common.js";
 import { wordToFilename } from "../utils.js";
-import { T_DICTIONARY, T_ROW, T_WORD } from "../types/dictionary";
+import { T_DICTIONARY, T_ROW, T_RECORD } from "../db/types";
 
 async function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -23,10 +23,10 @@ function fetchWordSync(foreignWord: string) {
 }
 
 async function downloadAudio(dictionary: T_DICTIONARY<T_ROW>) {
-  await asyncForEach(dictionary, async (word: T_WORD) => {
-    if (!word.isAudioAvailable) {
-      fetchWordSync(word.foreignWord);
-      word.isAudioAvailable = true;
+  await asyncForEach(dictionary, async (record: T_RECORD) => {
+    if (!record.wordSet.isAudioAvailable) {
+      fetchWordSync(record.wordSet.word);
+      record.wordSet.isAudioAvailable = true;
       await sleep();
     }
   });

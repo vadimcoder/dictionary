@@ -1,6 +1,6 @@
 import fs from "fs";
 import { prettify } from "./prettify.js";
-import { T_DICTIONARY, T_ROW, T_ROW_RAW, T_WORD } from "../types/dictionary";
+import { T_DICTIONARY, T_ROW, T_ROW_RAW, T_RECORD } from "../db/types";
 import { deserializeDictionary, serializeDictionary } from "../db/db.js";
 
 export const PATH = "../private/dictionary.json";
@@ -23,17 +23,17 @@ export async function writeDbToFile(dictionary: T_DICTIONARY<T_ROW>) {
 
 export async function asyncForEach(
   db: T_DICTIONARY<T_ROW>,
-  callback: (row: T_WORD) => Promise<void>,
+  callback: (row: T_RECORD) => Promise<void>,
 ) {
   for (const group of db) {
     for (const subgroup of group.subgroups) {
       for (const item of subgroup.rows) {
         if (item.isAssociation) {
-          for (const word of item.words) {
+          for (const word of item.records) {
             await callback(word);
           }
         } else {
-          await callback(item.words[0]);
+          await callback(item.records[0]);
         }
       }
     }

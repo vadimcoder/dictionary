@@ -1,14 +1,14 @@
-import { ForeignWord } from "../../components/ForeignWord/ForeignWord";
-import { T_WORD } from "../../types/dictionary";
+import { T_RECORD } from "../../db/types";
+import { Record } from "../../components/Record";
 
-export function TrSimple({ word }: { word: T_WORD }) {
+export function TrSimple({ record }: { record: T_RECORD }) {
   return (
     <tr>
       <td>
-        <ForeignWord word={word} />
+        <Record record={record} />
       </td>
-      <td>{word.transcription}</td>
-      <td>{word.translation}</td>
+      <td>{record.wordSet.transcription}</td>
+      <td>{record.translation}</td>
     </tr>
   );
 }

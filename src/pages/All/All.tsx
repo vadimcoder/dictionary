@@ -1,20 +1,21 @@
 import { Fragment } from "react";
 import "./style.css";
-import { Tr } from "./Tr/Tr";
+import { Tr } from "./Tr";
 import { DB } from "../../db/db";
-import { T_GROUP, T_ROW, T_SUBGROUP, T_WORD } from "../../types/dictionary";
+import { T_GROUP, T_ROW, T_SUBGROUP, T_RECORD } from "../../db/types";
 
-function Associations({ words }: { words: T_WORD[] }) {
+function Associations({ records }: { records: T_RECORD[] }) {
   return (
     <>
-      {words.map((word, index) => {
-        const isBorderBottom = words.length === 1 || index === words.length - 1;
+      {records.map((record, index) => {
+        const isBorderBottom =
+          records.length === 1 || index === records.length - 1;
 
         return (
           <Tr
-            key={word.foreignWord}
-            word={word}
-            words={words}
+            key={record.wordSet.word}
+            record={record}
+            // words={words}
             index={index}
             isBorderBottom={isBorderBottom}
           />
@@ -27,13 +28,15 @@ function Associations({ words }: { words: T_WORD[] }) {
 function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROW> }) {
   const subgroupItems = subgroupItem.rows.map((row, index) => {
     if (row.isAssociation) {
-      return <Associations key={row.words[0].foreignWord} words={row.words} />;
+      return (
+        <Associations key={row.records[0].wordSet.word} records={row.records} />
+      );
     }
 
     return (
       <Tr
-        key={row.words[0].foreignWord}
-        word={row.words[0]}
+        key={row.records[0].wordSet.word}
+        record={row.records[0]}
         rows={subgroupItem.rows}
         index={index}
       />

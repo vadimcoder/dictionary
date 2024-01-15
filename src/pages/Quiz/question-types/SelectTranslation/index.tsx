@@ -1,19 +1,16 @@
+import "./style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
-import { T_WORD_WITH_ASSOCIATIONS } from "../../../../types/dictionary";
+import { T_LAST_RECORD } from "../../../../db/types";
 import { getRandomItem } from "../../../../utils";
-import { WordWithAudio } from "../../../../components/WordWithAudio/WordWithAudio";
 import { VARIANT_NUMBER } from "../questionType";
-import "./style.css";
+import { Record } from "../../../../components/Record";
 
-function getVariants(
-  row: T_WORD_WITH_ASSOCIATIONS,
-  lastRows: T_WORD_WITH_ASSOCIATIONS[],
-) {
-  const variants: string[] = [row.word.translation];
+function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
+  const variants: string[] = [row.record.translation];
 
   while (variants.length < VARIANT_NUMBER) {
-    const randomTranslation = getRandomItem(lastRows).word.translation;
+    const randomTranslation = getRandomItem(lastRows).record.translation;
 
     if (!variants.includes(randomTranslation)) {
       variants.push(randomTranslation);
@@ -29,18 +26,18 @@ export function SelectTranslation({
   lastRows,
 }: {
   onCorrectAnswer: () => void;
-  row: T_WORD_WITH_ASSOCIATIONS;
-  lastRows: T_WORD_WITH_ASSOCIATIONS[];
+  row: T_LAST_RECORD;
+  lastRows: T_LAST_RECORD[];
 }) {
   const [answer, setAnswer] = useState<string>();
-  const isCorrect = answer === row.word.translation;
+  const isCorrect = answer === row.record.translation;
 
   const variants = useMemo(() => getVariants(row, lastRows), []);
 
   function onChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
     setAnswer(value);
 
-    if (value === row.word.translation) {
+    if (value === row.record.translation) {
       setTimeout(onCorrectAnswer, 100);
     }
   }
@@ -59,7 +56,7 @@ export function SelectTranslation({
 
   return (
     <div className={"SelectTranslation"}>
-      <WordWithAudio word={row.word} />
+      <Record record={row.record} />
 
       <ul>
         {variants.map((variant) => (

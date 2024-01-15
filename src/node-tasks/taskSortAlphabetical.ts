@@ -1,7 +1,7 @@
 import { readDbFromFile, writeDbToFile } from "./common.js";
 import { ALPHABETICAL } from "../db/constants.js";
 import orderBy from "lodash.orderby";
-import { T_DICTIONARY, T_GROUP, T_ROW } from "../types/dictionary";
+import { T_DICTIONARY, T_GROUP, T_ROW } from "../db/types";
 
 function sortAlphabetical(dictionary: T_DICTIONARY<T_ROW>) {
   dictionary.forEach(({ subgroups }: T_GROUP<T_ROW>) => {
@@ -9,7 +9,7 @@ function sortAlphabetical(dictionary: T_DICTIONARY<T_ROW>) {
       if (subgroup.subgroupName === ALPHABETICAL) {
         subgroup.rows = orderBy(
           subgroup.rows,
-          (row) => row.words[0].foreignWord,
+          (row) => row.records[0].wordSet.word,
         );
       }
     });

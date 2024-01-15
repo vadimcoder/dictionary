@@ -1,8 +1,9 @@
 import "./style.css";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
+import { DB } from "../../../db/db";
 
-const DAYS_AGO_MAX = 200;
+const DAYS_AGO_MAX = DB.allRowsSorted.length;
 
 export function LatestSelector() {
   const [globalState, setGlobalState] = useGlobalState();

@@ -5,10 +5,11 @@ import {
   T_GROUP,
   T_ROW,
   T_ROW_RAW,
-  T_WORD,
-  T_WORD_WITH_ASSOCIATIONS,
-} from "../types/dictionary";
-import { T_DB } from "../types/db";
+  T_RECORD,
+  T_LAST_RECORD,
+  T_DB,
+  T_ROW_RAW_IRREGULAR,
+} from "./types";
 import orderBy from "lodash.orderby";
 
 const dictionary = deserializeDictionary(
@@ -25,63 +26,118 @@ export const DB: T_DB = {
   },
 };
 
-function getDateAdded(word: T_ROW_RAW): Date {
+function getDateAdded(
+  dateAdded: string,
+  row: T_ROW_RAW | T_ROW_RAW_IRREGULAR,
+): Date {
   let date: Date;
 
   try {
-    date = parseISO(word[3]);
+    date = parseISO(dateAdded);
   } catch (e) {
-    console.log("Cannot parse as date:", word);
+    console.log("Cannot parse as date:", row);
     date = new Date();
   }
 
   return date;
 }
 
-function deserializeWord(word: T_ROW_RAW): T_WORD {
-  return {
-    foreignWord: word[0],
-    transcription: word[1],
-    translation: word[2],
-    dateAdded: getDateAdded(word),
-    isAudioAvailable: word[4],
-  };
+function deserializeWord(rowRaw: T_ROW_RAW | T_ROW_RAW_IRREGULAR): T_RECORD {
+  if (rowRaw.length === 5) {
+    return {
+      wordSet: {
+        word: rowRaw[0],
+        transcription: rowRaw[1],
+        isAudioAvailable: rowRaw[4],
+      },
+      translation: rowRaw[2],
+      dateAdded: getDateAdded(rowRaw[3], rowRaw),
+    };
+  }
+
+  if (rowRaw.length === 11) {
+    return {
+      wordSet: {
+        word: rowRaw[0],
+        transcription: rowRaw[1],
+        isAudioAvailable: rowRaw[2],
+      },
+      translation: rowRaw[9],
+      dateAdded: getDateAdded(rowRaw[10], rowRaw),
+      irregularVerb: {
+        secondForm: {
+          word: rowRaw[3],
+          transcription: rowRaw[4],
+          isAudioAvailable: rowRaw[5],
+        },
+        thirdForm: {
+          word: rowRaw[6],
+          transcription: rowRaw[7],
+          isAudioAvailable: rowRaw[8],
+        },
+      },
+    };
+  }
+
+  // should not reach here
+  console.trace(rowRaw);
+  throw new Error("unable to deserialize");
 }
 
-function serializeWord(word: T_WORD): T_ROW_RAW {
-  const {
-    foreignWord,
-    transcription,
-    translation,
-    dateAdded,
-    isAudioAvailable,
-  } = word;
+function serializeWord(record: T_RECORD): T_ROW_RAW | T_ROW_RAW_IRREGULAR {
+  const dateISO = formatISO(record.dateAdded, { representation: "date" });
 
-  const dateISO = formatISO(dateAdded, { representation: "date" });
+  if (record.irregularVerb) {
+    return [
+      record.wordSet.word,
+      record.wordSet.transcription,
+      record.wordSet.isAudioAvailable,
 
-  return [foreignWord, transcription, translation, dateISO, isAudioAvailable];
+      record.irregularVerb.secondForm.word,
+      record.irregularVerb.secondForm.transcription,
+      record.irregularVerb.secondForm.isAudioAvailable,
+
+      record.irregularVerb.thirdForm.word,
+      record.irregularVerb.thirdForm.transcription,
+      record.irregularVerb.thirdForm.isAudioAvailable,
+
+      record.translation,
+
+      dateISO,
+    ];
+  }
+
+  return [
+    record.wordSet.word,
+    record.wordSet.transcription,
+    record.translation,
+    dateISO,
+    record.wordSet.isAudioAvailable,
+  ];
 }
 
-function deserializeRow(rowRaw: T_ROW_RAW | T_ROW_RAW[]) {
+function deserializeRow(rowRaw: T_ROW_RAW | T_ROW_RAW[]): T_ROW {
   if (rowRaw[0] instanceof Array) {
     return {
-      words: (rowRaw as T_ROW_RAW[]).map(deserializeWord),
+      records: (rowRaw as T_ROW_RAW[]).map(deserializeWord),
       isAssociation: true,
     };
   }
 
   return {
-    words: [deserializeWord(rowRaw as T_ROW_RAW)],
+    records: [deserializeWord(rowRaw as T_ROW_RAW)],
     isAssociation: false,
   };
 }
 
-function serializeRow(row: T_ROW): T_ROW_RAW | T_ROW_RAW[] {
+function serializeRow(
+  row: T_ROW,
+): T_ROW_RAW | T_ROW_RAW_IRREGULAR | (T_ROW_RAW | T_ROW_RAW_IRREGULAR)[] {
   if (row.isAssociation) {
-    return row.words.map(serializeWord);
+    return row.records.map(serializeWord);
   }
 
-  return serializeWord(row.words[0]);
+  return serializeWord(row.records[0]);
 }
 
 function mapRow<INPUT_ROW_TYPE, OUTPUT_ROW_TYPE>(
@@ -105,37 +161,33 @@ export function forEachRow(callback: (row: T_ROW) => void): void {
   });
 }
 
-function splitAssociations(words: T_WORD[]): T_WORD_WITH_ASSOCIATIONS[] {
+function splitAssociations(words: T_RECORD[]): T_LAST_RECORD[] {
   return words.map((word) => ({
-    word,
+    record: word,
     isAssociation: true,
-    associationsIncludingTheWord: words,
-    associationsExcludingTheWord: words.filter((w) => w !== word),
+    associationsIncludingTheRecord: words,
+    associationsExcludingTheRecord: words.filter((w) => w !== word),
   }));
 }
 
-function getAllRowsSorted(): T_WORD_WITH_ASSOCIATIONS[] {
+function getAllRowsSorted(): T_LAST_RECORD[] {
   const allRows = getAllRows();
 
-  return orderBy(
-    allRows,
-    (row: T_WORD_WITH_ASSOCIATIONS) => row.word.dateAdded,
-    "desc",
-  );
+  return orderBy(allRows, (row: T_LAST_RECORD) => row.record.dateAdded, "desc");
 }
 
-function getAllRows(): T_WORD_WITH_ASSOCIATIONS[] {
-  let allRows: T_WORD_WITH_ASSOCIATIONS[] = [];
+function getAllRows(): T_LAST_RECORD[] {
+  let allRows: T_LAST_RECORD[] = [];
 
-  forEachRow(({ words, isAssociation }) => {
+  forEachRow(({ records, isAssociation }) => {
     if (isAssociation) {
-      allRows = allRows.concat(splitAssociations(words));
+      allRows = allRows.concat(splitAssociations(records));
     } else
       allRows.push({
-        word: words[0],
+        record: records[0],
         isAssociation,
-        associationsIncludingTheWord: [],
-        associationsExcludingTheWord: [],
+        associationsIncludingTheRecord: [],
+        associationsExcludingTheRecord: [],
       });
   });
 
@@ -150,6 +202,11 @@ export function deserializeDictionary(
 
 export function serializeDictionary(
   dictionary: T_DICTIONARY<T_ROW>,
-): T_DICTIONARY<T_ROW_RAW | T_ROW_RAW[]> {
-  return mapRow<T_ROW, T_ROW_RAW | T_ROW_RAW[]>(dictionary, serializeRow);
+): T_DICTIONARY<
+  T_ROW_RAW | T_ROW_RAW_IRREGULAR | (T_ROW_RAW | T_ROW_RAW_IRREGULAR)[]
+> {
+  return mapRow<
+    T_ROW,
+    T_ROW_RAW | T_ROW_RAW_IRREGULAR | (T_ROW_RAW | T_ROW_RAW_IRREGULAR)[]
+  >(dictionary, serializeRow);
 }

@@ -1,6 +1,6 @@
 import { TBodyAssociation } from "../TBodyAssociation/TBodyAssociation";
 import { DB } from "../../../db/db";
-import { T_WORD_WITH_ASSOCIATIONS } from "../../../types/dictionary";
+import { T_LAST_RECORD } from "../../../db/types";
 import { TrSimple } from "../TrSimple";
 import "./style.css";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
@@ -11,12 +11,18 @@ export function LatestList() {
   return (
     <table className={"LatestList"}>
       {DB.getLastRows(globalState.latestLastRowsCount).map(
-        (row: T_WORD_WITH_ASSOCIATIONS) =>
-          row.isAssociation ? (
-            <TBodyAssociation row={row} key={row.word.foreignWord} />
+        (lastRecord: T_LAST_RECORD) =>
+          lastRecord.isAssociation ? (
+            <TBodyAssociation
+              lastRecord={lastRecord}
+              key={lastRecord.record.wordSet.word}
+            />
           ) : (
-            <tbody className={"TBodySimple"} key={row.word.foreignWord}>
-              <TrSimple word={row.word} />
+            <tbody
+              className={"TBodySimple"}
+              key={lastRecord.record.wordSet.word}
+            >
+              <TrSimple record={lastRecord.record} />
             </tbody>
           ),
       )}
