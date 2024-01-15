@@ -1,0 +1,16 @@
+.Styleguide {
+  display: flex;
+  justify-content: center;
+}
+
+.StyleguideColors {
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
+  gap: 40px;
+  font-size: 14px;
+}
+
+.ColorBox {
+  width: 100px;
+  height: 100px;
+}

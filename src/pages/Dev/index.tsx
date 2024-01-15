@@ -1,4 +1,4 @@
-import { Styleguide } from "../../Styleguide";
+import { Styleguide } from "../../components/Styleguide";
 import { DB } from "../../db/db";
 
 export function Dev() {
