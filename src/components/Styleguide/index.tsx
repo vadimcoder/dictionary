@@ -1,18 +1,18 @@
 import "./style.css";
 
-export function Styleguide() {
-  const colors = [
-    "blue",
-    "blue-2",
-    "pink",
-    "form-control",
-    "form-control-disabled",
-    "red",
-    "red-softer",
-    "green",
-    "green-softer",
-  ];
+const colors = [
+  "blue",
+  "blue-2",
+  "pink",
+  "form-control",
+  "form-control-disabled",
+  "red",
+  "red-softer",
+  "green",
+  "green-softer",
+];
 
+export function Styleguide() {
   return (
     <div className={"Styleguide"}>
       <div className={"StyleguideColors"}>
