@@ -15,7 +15,7 @@ export function Tr({
         <Record record={record} />
       </td>
       {!record.irregularVerb && <td>{record.wordSet.transcription}</td>}
-      <td>{record.translation}</td>
+      <td dangerouslySetInnerHTML={{ __html: record.translation }}></td>
     </tr>
   );
 }

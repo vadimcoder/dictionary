@@ -12,7 +12,11 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
+function removeTo(word: string) {
+  return word.startsWith("to") ? word.substring(3) : word;
+}
 
 export function WordWithLinks({
   word,
@@ -22,6 +26,7 @@ export function WordWithLinks({
   dateAdded: Date;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const wordForLinks = useMemo(() => removeTo(word), [word]);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -69,7 +74,7 @@ export function WordWithLinks({
           >
             <a
               target={"_blank"}
-              href={`https://translate.google.com/details?sl=en&tl=ru&text=${word}&op=translate`}
+              href={`https://translate.google.com/details?sl=en&tl=ru&text=${wordForLinks}&op=translate`}
               rel="noreferrer"
             >
               google
@@ -77,7 +82,7 @@ export function WordWithLinks({
             ,{" "}
             <a
               target={"_blank"}
-              href={`https://dictionary.cambridge.org/dictionary/english/${word}`}
+              href={`https://dictionary.cambridge.org/dictionary/english/${wordForLinks}`}
               rel="noreferrer"
             >
               cam
@@ -85,7 +90,15 @@ export function WordWithLinks({
             ,{" "}
             <a
               target={"_blank"}
-              href={`https://translate.yandex.ru/?source_lang=en&target_lang=ru&text=${word}`}
+              href={`https://www.multitran.com/m.exe?s=${wordForLinks}&l1=1&l2=2`}
+              rel="noreferrer"
+            >
+              multitran
+            </a>
+            ,{" "}
+            <a
+              target={"_blank"}
+              href={`https://translate.yandex.ru/?source_lang=en&target_lang=ru&text=${wordForLinks}`}
               rel="noreferrer"
             >
               ya
