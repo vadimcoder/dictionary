@@ -30,11 +30,9 @@ function getDateAdded(
   dateAdded: string,
   row: T_ROW_RAW | T_ROW_RAW_IRREGULAR,
 ): Date {
-  let date: Date;
+  let date = parseISO(dateAdded);
 
-  try {
-    date = parseISO(dateAdded);
-  } catch (e) {
+  if (Number.isNaN(date.getTime())) {
     console.log("Cannot parse as date:", row);
     date = new Date();
   }
@@ -85,7 +83,14 @@ function deserializeWord(rowRaw: T_ROW_RAW | T_ROW_RAW_IRREGULAR): T_RECORD {
 }
 
 function serializeWord(record: T_RECORD): T_ROW_RAW | T_ROW_RAW_IRREGULAR {
-  const dateISO = formatISO(record.dateAdded, { representation: "date" });
+  let dateISO;
+
+  try {
+    dateISO = formatISO(record.dateAdded, { representation: "date" });
+  } catch (e) {
+    console.log(record);
+    throw e;
+  }
 
   if (record.irregularVerb) {
     return [
