@@ -103,6 +103,14 @@ export function WordWithLinks({
             >
               ya
             </a>
+            ,{" "}
+            <a
+              target={"_blank"}
+              href={`https://www.google.com/search?q=${wordForLinks}&tbm=isch`}
+              rel="noreferrer"
+            >
+              pics
+            </a>
           </div>
         </FloatingFocusManager>
       )}
