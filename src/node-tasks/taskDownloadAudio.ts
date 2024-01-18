@@ -3,7 +3,7 @@ import { statSync } from "node:fs";
 import querystring from "querystring";
 import { forEachWord, readDbFromFile } from "./common.js";
 import { T_DICTIONARY, T_ROW } from "../db/types";
-import { getFileFullName } from "../utils/filenames.js";
+import { getFileFullName, getVerbWithoutTo } from "../utils/filenames.js";
 
 async function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -15,7 +15,7 @@ function checkFileExistSync(word: string) {
 
 function fetchWordSync(word: string) {
   const filename = getFileFullName(word);
-  const wordEscaped = querystring.escape(word);
+  const wordEscaped = querystring.escape(getVerbWithoutTo(word));
 
   const COMMAND = `curl \
   -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" \
