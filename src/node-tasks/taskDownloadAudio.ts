@@ -1,32 +1,38 @@
 import { execSync } from "child_process";
+import { statSync } from "node:fs";
 import querystring from "querystring";
-import { asyncForEach, readDbFromFile, writeDbToFile } from "./common.js";
-import { wordToFilename } from "../utils.js";
-import { T_DICTIONARY, T_ROW, T_RECORD } from "../db/types";
+import { forEachWord, readDbFromFile } from "./common.js";
+import { T_DICTIONARY, T_ROW } from "../db/types";
+import { getFileFullName } from "../utils/filenames.js";
 
 async function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-function fetchWordSync(foreignWord: string) {
-  const filename = wordToFilename(foreignWord);
-  const wordEscaped = querystring.escape(foreignWord);
+function checkFileExistSync(word: string) {
+  statSync(getFileFullName(word));
+}
+
+function fetchWordSync(word: string) {
+  const filename = getFileFullName(word);
+  const wordEscaped = querystring.escape(word);
 
   const COMMAND = `curl \
   -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" \
-  --output public/audio/${filename}.mp3 \
+  --output ${filename} \
   "https://translate.google.com.vn/translate_tts?ie=UTF-8&q=${wordEscaped}&tl=en-us&client=tw-ob"`;
 
-  console.log("foreignWord:", foreignWord);
+  console.log("word:", word);
 
   execSync(COMMAND);
 }
 
 async function downloadAudio(dictionary: T_DICTIONARY<T_ROW>) {
-  await asyncForEach(dictionary, async (record: T_RECORD) => {
-    if (!record.wordSet.isAudioAvailable) {
-      fetchWordSync(record.wordSet.word);
-      record.wordSet.isAudioAvailable = true;
+  await forEachWord(dictionary, async (word: string) => {
+    try {
+      checkFileExistSync(word);
+    } catch (e) {
+      fetchWordSync(word);
       await sleep();
     }
   });
@@ -35,11 +41,5 @@ async function downloadAudio(dictionary: T_DICTIONARY<T_ROW>) {
 export async function taskDownloadAudio() {
   const dictionary: T_DICTIONARY<T_ROW> = readDbFromFile();
 
-  try {
-    await downloadAudio(dictionary);
-  } catch (e) {
-    console.log(e);
-  } finally {
-    await writeDbToFile(dictionary);
-  }
+  await downloadAudio(dictionary);
 }

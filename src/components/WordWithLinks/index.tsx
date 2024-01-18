@@ -13,10 +13,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { useMemo, useState } from "react";
-
-function removeTo(word: string) {
-  return word.startsWith("to") ? word.substring(3) : word;
-}
+import { getVerbWithoutTo } from "../../utils/filenames";
 
 export function WordWithLinks({
   word,
@@ -26,7 +23,7 @@ export function WordWithLinks({
   dateAdded: Date;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const wordForLinks = useMemo(() => removeTo(word), [word]);
+  const wordForLinks = useMemo(() => getVerbWithoutTo(word), [word]);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,

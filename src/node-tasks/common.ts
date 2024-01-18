@@ -21,21 +21,33 @@ export async function writeDbToFile(dictionary: T_DICTIONARY<T_ROW>) {
   fs.writeFileSync(PATH, output);
 }
 
-export async function asyncForEach(
+export async function forEachWord(
   db: T_DICTIONARY<T_ROW>,
-  callback: (row: T_RECORD) => Promise<void>,
+  callback: (word: string) => Promise<void>,
 ) {
   for (const group of db) {
     for (const subgroup of group.subgroups) {
-      for (const item of subgroup.rows) {
-        if (item.isAssociation) {
-          for (const word of item.records) {
-            await callback(word);
+      for (const row of subgroup.rows) {
+        if (row.isAssociation) {
+          for (const record of row.records) {
+            await processRecord(record, callback);
           }
         } else {
-          await callback(item.records[0]);
+          await processRecord(row.records[0], callback);
         }
       }
     }
+  }
+}
+
+async function processRecord(
+  record: T_RECORD,
+  callback: (word: string) => Promise<void>,
+): Promise<void> {
+  await callback(record.wordSet.word);
+
+  if (record.irregularVerb) {
+    await callback(record.irregularVerb.secondForm.word);
+    await callback(record.irregularVerb.thirdForm.word);
   }
 }

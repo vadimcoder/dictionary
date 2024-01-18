@@ -1,4 +1,4 @@
-import { getRandomItem } from "../../../utils";
+import { getRandomItem } from "../../../utils/utils";
 import { DB } from "../../../db/db";
 import { T_LAST_RECORD } from "../../../db/types";
 

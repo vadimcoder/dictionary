@@ -2,7 +2,7 @@ import "./style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
 import { T_LAST_RECORD } from "../../../../db/types";
-import { getRandomItem } from "../../../../utils";
+import { getRandomItem } from "../../../../utils/utils";
 import { VARIANT_NUMBER } from "../questionType";
 import { Record } from "../../../../components/Record";
 
