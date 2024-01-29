@@ -20,18 +20,14 @@ export type T_ROW_RAW = [
   string /* transcription */,
   string /* translation */,
   string /* dateAdded */,
-  boolean /* isAudioAvailable */ /* TODO: move up */,
 ];
 export type T_ROW_RAW_IRREGULAR = [
   string /* word */,
   string /* transcription */,
-  boolean /* isAudioAvailable */,
   string /* word */,
   string /* transcription */,
-  boolean /* isAudioAvailable */,
   string /* word */,
   string /* transcription */,
-  boolean /* isAudioAvailable */,
   string /* translation */,
   string /* dateAdded */,
 ];
@@ -39,7 +35,6 @@ export type T_ROW_RAW_IRREGULAR = [
 export type T_WORD_SET = {
   word: string;
   transcription: string;
-  isAudioAvailable: boolean;
 };
 
 export type T_RECORD = {

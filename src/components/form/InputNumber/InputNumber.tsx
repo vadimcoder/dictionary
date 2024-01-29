@@ -1,4 +1,4 @@
-import { VARIANT_NUMBER } from "../../../pages/Quiz/question-types/questionType";
+import { DEFAULT_VARIANT_COUNT } from "../../../pages/Quiz/question-types/questionType";
 import "./style.css";
 
 export function InputNumber({
@@ -13,7 +13,7 @@ export function InputNumber({
       <button
         type={"button"}
         onClick={() => onChange(value - 1)}
-        disabled={value <= VARIANT_NUMBER}
+        disabled={value <= DEFAULT_VARIANT_COUNT}
       >
         &lt;
       </button>

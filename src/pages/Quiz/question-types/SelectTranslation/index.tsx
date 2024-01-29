@@ -3,13 +3,13 @@ import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
 import { T_LAST_RECORD } from "../../../../db/types";
 import { getRandomItem } from "../../../../utils/utils";
-import { VARIANT_NUMBER } from "../questionType";
+import { DEFAULT_VARIANT_COUNT } from "../questionType";
 import { Record } from "../../../../components/Record";
 
 function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
   const variants: string[] = [row.record.translation];
 
-  while (variants.length < VARIANT_NUMBER) {
+  while (variants.length < DEFAULT_VARIANT_COUNT) {
     const randomTranslation = getRandomItem(lastRows).record.translation;
 
     if (!variants.includes(randomTranslation)) {

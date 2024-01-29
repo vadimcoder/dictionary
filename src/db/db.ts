@@ -41,37 +41,33 @@ function getDateAdded(
 }
 
 function deserializeWord(rowRaw: T_ROW_RAW | T_ROW_RAW_IRREGULAR): T_RECORD {
-  if (rowRaw.length === 5) {
+  if (rowRaw.length === 4) {
     return {
       wordSet: {
         word: rowRaw[0],
         transcription: rowRaw[1],
-        isAudioAvailable: rowRaw[4],
       },
       translation: rowRaw[2],
       dateAdded: getDateAdded(rowRaw[3], rowRaw),
     };
   }
 
-  if (rowRaw.length === 11) {
+  if (rowRaw.length === 8) {
     return {
       wordSet: {
         word: rowRaw[0],
         transcription: rowRaw[1],
-        isAudioAvailable: rowRaw[2],
       },
-      translation: rowRaw[9],
-      dateAdded: getDateAdded(rowRaw[10], rowRaw),
+      translation: rowRaw[6],
+      dateAdded: getDateAdded(rowRaw[7], rowRaw),
       irregularVerb: {
         secondForm: {
           word: rowRaw[3],
           transcription: rowRaw[4],
-          isAudioAvailable: rowRaw[5],
         },
         thirdForm: {
           word: rowRaw[6],
           transcription: rowRaw[7],
-          isAudioAvailable: rowRaw[8],
         },
       },
     };
@@ -96,15 +92,12 @@ function serializeWord(record: T_RECORD): T_ROW_RAW | T_ROW_RAW_IRREGULAR {
     return [
       record.wordSet.word,
       record.wordSet.transcription,
-      record.wordSet.isAudioAvailable,
 
       record.irregularVerb.secondForm.word,
       record.irregularVerb.secondForm.transcription,
-      record.irregularVerb.secondForm.isAudioAvailable,
 
       record.irregularVerb.thirdForm.word,
       record.irregularVerb.thirdForm.transcription,
-      record.irregularVerb.thirdForm.isAudioAvailable,
 
       record.translation,
 
@@ -117,7 +110,6 @@ function serializeWord(record: T_RECORD): T_ROW_RAW | T_ROW_RAW_IRREGULAR {
     record.wordSet.transcription,
     record.translation,
     dateISO,
-    record.wordSet.isAudioAvailable,
   ];
 }
 

@@ -19,4 +19,4 @@ export function getRandomQuestionType() {
   ][random(0, 4)];
 }
 
-export const VARIANT_NUMBER = 4;
+export const DEFAULT_VARIANT_COUNT = 4;
