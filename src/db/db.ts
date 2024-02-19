@@ -62,12 +62,12 @@ function deserializeWord(rowRaw: T_ROW_RAW | T_ROW_RAW_IRREGULAR): T_RECORD {
       dateAdded: getDateAdded(rowRaw[7], rowRaw),
       irregularVerb: {
         secondForm: {
-          word: rowRaw[3],
-          transcription: rowRaw[4],
+          word: rowRaw[2],
+          transcription: rowRaw[3],
         },
         thirdForm: {
-          word: rowRaw[6],
-          transcription: rowRaw[7],
+          word: rowRaw[4],
+          transcription: rowRaw[5],
         },
       },
     };
