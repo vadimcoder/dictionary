@@ -31,7 +31,7 @@ function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
 
   insertOther(variants, lastRows);
 
-  return shuffle(variants);
+  return shuffle(shuffle(variants));
 }
 
 export function SelectTranslation({
@@ -70,7 +70,7 @@ export function SelectTranslation({
 
   return (
     <div className={"SelectTranslation"}>
-      <Record record={row.record} />
+      <Record record={row.record} autoplay />
 
       <ul>
         {variants.map((variant) => (

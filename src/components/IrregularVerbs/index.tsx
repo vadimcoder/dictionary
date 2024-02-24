@@ -7,13 +7,19 @@ function getStyle(gridColumn: number, gridRow: number) {
   return { gridColumn, gridRow };
 }
 
-export function IrregularVerbs({ record }: { record: T_RECORD }) {
+export function IrregularVerbs({
+  record,
+  autoplay = false,
+}: {
+  record: T_RECORD;
+  autoplay?: boolean;
+}) {
   const { dateAdded } = record;
 
   return (
     <div className={"IrregularVerbs"}>
       <div style={getStyle(1, 1)}>
-        <Player word={record.wordSet.word} />
+        <Player word={record.wordSet.word} autoplay={autoplay} />
       </div>
 
       <div style={getStyle(2, 1)}>
