@@ -1,14 +1,20 @@
 import "./style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
-import { T_LAST_RECORD } from "../../../../db/types";
+import { T_LAST_RECORD, T_RECORD } from "../../../../db/types";
 import { getRandomItem } from "../../../../utils/utils";
 import { DEFAULT_VARIANT_COUNT } from "../questionType";
 import { Record } from "../../../../components/Record";
 
-function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
-  const variants: string[] = [row.record.translation];
+function insertAssociations(variants: string[], row: T_LAST_RECORD) {
+  if (row.isAssociation) {
+    row.associationsExcludingTheRecord.forEach((record: T_RECORD) => {
+      variants.push(record.translation);
+    });
+  }
+}
 
+function insertOther(variants: string[], lastRows: T_LAST_RECORD[]) {
   while (variants.length < DEFAULT_VARIANT_COUNT) {
     const randomTranslation = getRandomItem(lastRows).record.translation;
 
@@ -16,6 +22,14 @@ function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
       variants.push(randomTranslation);
     }
   }
+}
+
+function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
+  const variants: string[] = [row.record.translation];
+
+  insertAssociations(variants, row);
+
+  insertOther(variants, lastRows);
 
   return shuffle(variants);
 }
