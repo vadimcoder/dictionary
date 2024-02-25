@@ -27,23 +27,23 @@ export function IrregularVerbs({
       </div>
 
       <div style={getStyle(4, 1)}>
-        <Player word={record.irregularVerb!.secondForm.word} />
+        <Player word={record.irregularVerb!.secondWordSet.word} />
       </div>
 
       <div style={getStyle(5, 1)}>
         <WordWithLinks
-          word={record.irregularVerb!.secondForm.word}
+          word={record.irregularVerb!.secondWordSet.word}
           dateAdded={dateAdded}
         />
       </div>
 
       <div style={getStyle(7, 1)}>
-        <Player word={record.irregularVerb!.thirdForm.word} />
+        <Player word={record.irregularVerb!.thirdWordSet.word} />
       </div>
 
       <div style={getStyle(8, 1)}>
         <WordWithLinks
-          word={record.irregularVerb!.thirdForm.word}
+          word={record.irregularVerb!.thirdWordSet.word}
           dateAdded={dateAdded}
         />
       </div>
@@ -51,11 +51,11 @@ export function IrregularVerbs({
       <div style={getStyle(2, 2)}>{record.wordSet.transcription}</div>
 
       <div style={getStyle(5, 2)}>
-        {record.irregularVerb!.secondForm.transcription}
+        {record.irregularVerb!.secondWordSet.transcription}
       </div>
 
       <div style={getStyle(8, 2)}>
-        {record.irregularVerb!.thirdForm.transcription}
+        {record.irregularVerb!.thirdWordSet.transcription}
       </div>
     </div>
   );

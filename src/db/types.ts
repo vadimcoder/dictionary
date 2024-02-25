@@ -42,8 +42,8 @@ export type T_RECORD = {
   translation: string;
   dateAdded: Date;
   irregularVerb?: {
-    secondForm: T_WORD_SET;
-    thirdForm: T_WORD_SET;
+    secondWordSet: T_WORD_SET;
+    thirdWordSet: T_WORD_SET;
   };
 };
 

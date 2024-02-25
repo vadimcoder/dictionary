@@ -16,10 +16,6 @@
   }
 }
 
-h1 {
-  font-size: 200%;
-}
-
 input {
   border: 0.15em solid var(--color-form-control);
   border-radius: var(--radius);
@@ -31,7 +27,6 @@ ul {
   padding: 0;
 }
 
-
 .transcription, .translation {
-  font-size: 1.5em;
+  font-size: var(--fontSize);
 }

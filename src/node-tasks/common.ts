@@ -47,7 +47,7 @@ async function processRecord(
   await callback(record.wordSet.word);
 
   if (record.irregularVerb) {
-    await callback(record.irregularVerb.secondForm.word);
-    await callback(record.irregularVerb.thirdForm.word);
+    await callback(record.irregularVerb.secondWordSet.word);
+    await callback(record.irregularVerb.thirdWordSet.word);
   }
 }

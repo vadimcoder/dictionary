@@ -61,11 +61,11 @@ function deserializeWord(rowRaw: T_ROW_RAW | T_ROW_RAW_IRREGULAR): T_RECORD {
       translation: rowRaw[6],
       dateAdded: getDateAdded(rowRaw[7], rowRaw),
       irregularVerb: {
-        secondForm: {
+        secondWordSet: {
           word: rowRaw[2],
           transcription: rowRaw[3],
         },
-        thirdForm: {
+        thirdWordSet: {
           word: rowRaw[4],
           transcription: rowRaw[5],
         },
@@ -93,11 +93,11 @@ function serializeWord(record: T_RECORD): T_ROW_RAW | T_ROW_RAW_IRREGULAR {
       record.wordSet.word,
       record.wordSet.transcription,
 
-      record.irregularVerb.secondForm.word,
-      record.irregularVerb.secondForm.transcription,
+      record.irregularVerb.secondWordSet.word,
+      record.irregularVerb.secondWordSet.transcription,
 
-      record.irregularVerb.thirdForm.word,
-      record.irregularVerb.thirdForm.transcription,
+      record.irregularVerb.thirdWordSet.word,
+      record.irregularVerb.thirdWordSet.transcription,
 
       record.translation,
 

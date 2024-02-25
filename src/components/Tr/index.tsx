@@ -24,7 +24,6 @@ export function Tr({
             // checked={false}
             // onChange={() => {}}
             size="small"
-            defaultChecked
           />
         </div>
       </td>
