@@ -1,3 +1,7 @@
-.solid-border {
+.border-top {
+    border-top: 1px solid black;
+}
+
+.border-bottom {
     border-bottom: 1px solid black;
 }

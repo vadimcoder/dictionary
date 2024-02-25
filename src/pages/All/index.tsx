@@ -8,14 +8,12 @@ function Associations({ records }: { records: T_RECORD[] }) {
   return (
     <>
       {records.map((record, index) => {
-        const isBorderBottom =
-          records.length === 1 || index === records.length - 1;
-
         return (
           <Tr
             key={record.wordSet.word}
             record={record}
-            isBorderBottom={isBorderBottom}
+            isBorderTop={index === 0}
+            isBorderBottom={index === records.length - 1}
           />
         );
       })}
