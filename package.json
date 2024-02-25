@@ -13,7 +13,7 @@
     "node-tasks-old": "rm -fr compiled && tsc && node compiled/dictionary/src/node-tasks/all.js"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.5",
+    "@floating-ui/react": "^0.26.9",
     "date-fns": "^3.3.1",
     "lodash.last": "^3.0.0",
     "lodash.orderby": "^4.6.0",
