@@ -1,8 +1,9 @@
 import "./style.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import { DirSwitcher } from "./DirSwitcher/DirSwitcher";
 import { useTheme } from "@mui/material/styles";
 import { Tab, Tabs } from "@mui/material";
+import { getTabValue } from "../../utils/utils";
 
 function a11yProps(index: number) {
   return {
@@ -11,42 +12,27 @@ function a11yProps(index: number) {
   };
 }
 
+const TABS: string[] = ["all", "latest", "quiz", "dev"] as const;
+
 export function NavBar() {
-  const { pathname } = useLocation();
   const theme = useTheme();
+  const match = useMatch("/:rootUrl/*");
+  const tabValue = getTabValue(TABS, match?.params?.rootUrl);
 
   return (
     <nav style={{ borderBottom: `1px solid ${theme.palette.divider}` }}>
       <div>
-        <Tabs value={pathname} aria-label="navigation">
-          <Tab
-            label="All"
-            {...a11yProps(0)}
-            value={"/"}
-            to={"/"}
-            component={Link}
-          />
-          <Tab
-            label="Latest"
-            {...a11yProps(1)}
-            value={"/latest"}
-            to={"/latest"}
-            component={Link}
-          />
-          <Tab
-            label="Quiz"
-            {...a11yProps(2)}
-            value={"/quiz"}
-            to={"/quiz"}
-            component={Link}
-          />
-          <Tab
-            label="Dev"
-            {...a11yProps(3)}
-            value={"/dev"}
-            to={"/dev"}
-            component={Link}
-          />
+        <Tabs value={tabValue} aria-label="navigation">
+          {TABS.map((name, index) => (
+            <Tab
+              key={name}
+              label={name}
+              {...a11yProps(index)}
+              value={name}
+              to={`/${name}`}
+              component={Link}
+            />
+          ))}
         </Tabs>
       </div>
 

@@ -1,68 +1,44 @@
 import "./style.css";
-import { Fragment } from "react";
-import { DB } from "../../db/db";
-import { T_GROUP, T_ROW, T_SUBGROUP, T_RECORD } from "../../db/types";
-import { Tr } from "../../components/Tr";
+import { Link, Outlet, useMatch } from "react-router-dom";
+import { Tab, Tabs } from "@mui/material";
+import { getTabValue } from "../../utils/utils";
 
-function Associations({ records }: { records: T_RECORD[] }) {
-  return (
-    <>
-      {records.map((record, index) => {
-        return (
-          <Tr
-            key={record.wordSet.word}
-            record={record}
-            isBorderTop={index === 0}
-            isBorderBottom={index === records.length - 1}
-          />
-        );
-      })}
-    </>
-  );
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
 }
+
+const TABS: string[] = [
+  "noun",
+  "adjective",
+  "verb",
+  "adverb",
+  "preposition",
+  "irregular-verbs",
+] as const;
 
 export function All() {
+  const match = useMatch("/all/:path");
+  const tabValue = getTabValue(TABS, match?.params?.path);
+
   return (
     <>
-      {DB.dictionary.map((group: T_GROUP<T_ROW>) => (
-        <Fragment key={group.groupName}>
-          <h1>{group.groupName}</h1>
-          <table cellSpacing={0}>
-            <tbody>
-              {group.subgroups.map((subgroupItem: T_SUBGROUP<T_ROW>) => (
-                <SubgroupItem
-                  key={subgroupItem.subgroupName}
-                  subgroupItem={subgroupItem}
-                />
-              ))}
-            </tbody>
-          </table>
-        </Fragment>
-      ))}
+      <Tabs value={tabValue} aria-label="navigation-all">
+        {TABS.map((name, index) => (
+          <Tab
+            key={name}
+            label={name}
+            {...a11yProps(index)}
+            value={name}
+            to={name}
+            component={Link}
+          />
+        ))}
+      </Tabs>
+
+      <Outlet />
     </>
-  );
-}
-
-function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROW> }) {
-  const subgroupItems = subgroupItem.rows.map((row) => {
-    if (row.isAssociation) {
-      return (
-        <Associations key={row.records[0].wordSet.word} records={row.records} />
-      );
-    }
-
-    return <Tr key={row.records[0].wordSet.word} record={row.records[0]} />;
-  });
-
-  return (
-    <Fragment>
-      <tr>
-        <td colSpan={4} className="subgroup">
-          {subgroupItem.subgroupName}
-        </td>
-      </tr>
-
-      {subgroupItems}
-    </Fragment>
   );
 }

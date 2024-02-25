@@ -1,6 +1,5 @@
 nav {
   position: sticky;
-  padding-inline-start: 40px;
   display: flex;
   justify-content: space-between;
 }
