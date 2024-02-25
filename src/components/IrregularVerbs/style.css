@@ -1,4 +1,5 @@
 .IrregularVerbs {
+    font-size: var(--fontSize);
     display: grid;
     grid-template-columns: min-content min-content 25px min-content min-content 25px min-content min-content;
 }

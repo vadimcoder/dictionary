@@ -5,6 +5,7 @@ import { Tr } from "../../../components/Tr";
 import { T_RECORD, T_LAST_RECORD } from "../../../db/types";
 import { Record } from "../../../components/Record";
 import { useCollapseState } from "../../../components/Collapse/useCollapseState";
+import Checkbox from "@mui/material/Checkbox";
 
 export function TBodyAssociation({
   lastRecord,
@@ -12,7 +13,7 @@ export function TBodyAssociation({
   lastRecord: T_LAST_RECORD;
 }) {
   const collapseStateAssociations: T_USE_COLLAPSE_STATE = useCollapseState();
-
+  // console.log(lastRecord);
   return (
     <tbody
       className={`TBodyAssociation-${
@@ -20,6 +21,16 @@ export function TBodyAssociation({
       }`}
     >
       <tr>
+        <td>
+          <div style={{ paddingInlineEnd: "10px" }}>
+            <Checkbox
+              // checked={false}
+              // onChange={() => {}}
+              size="small"
+              defaultChecked
+            />
+          </div>
+        </td>
         <td {...(lastRecord.record.irregularVerb && { colSpan: 2 })}>
           <div className={"TBodyAssociation__cell"}>
             <Record record={lastRecord.record} />
@@ -33,9 +44,15 @@ export function TBodyAssociation({
           </div>
         </td>
         {!lastRecord.record.irregularVerb && (
-          <td>{lastRecord.record.wordSet.transcription}</td>
+          <td>
+            <span className={"transcription"}>
+              {lastRecord.record.wordSet.transcription}
+            </span>
+          </td>
         )}
-        <td>{lastRecord.record.translation}</td>
+        <td>
+          <span className={"translation"}>{lastRecord.record.translation}</span>
+        </td>
       </tr>
 
       {collapseStateAssociations[0].isOpened &&

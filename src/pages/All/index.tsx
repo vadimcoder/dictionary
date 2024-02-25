@@ -21,30 +21,6 @@ function Associations({ records }: { records: T_RECORD[] }) {
   );
 }
 
-function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROW> }) {
-  const subgroupItems = subgroupItem.rows.map((row) => {
-    if (row.isAssociation) {
-      return (
-        <Associations key={row.records[0].wordSet.word} records={row.records} />
-      );
-    }
-
-    return <Tr key={row.records[0].wordSet.word} record={row.records[0]} />;
-  });
-
-  return (
-    <Fragment>
-      <tr>
-        <td colSpan={3} className="subgroup">
-          {subgroupItem.subgroupName}
-        </td>
-      </tr>
-
-      {subgroupItems}
-    </Fragment>
-  );
-}
-
 export function All() {
   return (
     <>
@@ -64,5 +40,29 @@ export function All() {
         </Fragment>
       ))}
     </>
+  );
+}
+
+function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROW> }) {
+  const subgroupItems = subgroupItem.rows.map((row) => {
+    if (row.isAssociation) {
+      return (
+        <Associations key={row.records[0].wordSet.word} records={row.records} />
+      );
+    }
+
+    return <Tr key={row.records[0].wordSet.word} record={row.records[0]} />;
+  });
+
+  return (
+    <Fragment>
+      <tr>
+        <td colSpan={4} className="subgroup">
+          {subgroupItem.subgroupName}
+        </td>
+      </tr>
+
+      {subgroupItems}
+    </Fragment>
   );
 }

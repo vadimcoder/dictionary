@@ -1,3 +1,4 @@
 .Word {
+  font-size: var(--fontSize);
   display: flex;
 }
