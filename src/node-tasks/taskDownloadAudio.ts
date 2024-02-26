@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import { statSync } from "node:fs";
 import querystring from "querystring";
 import { forEachWord, readDbFromFile } from "./common.js";
-import { T_DICTIONARY, T_ROW } from "../db/types";
+import { T_DICTIONARY, T_ROWS } from "../db/types";
 import { getFileFullName, getVerbWithoutTo } from "../utils/filenames.js";
 
 async function sleep() {
@@ -27,7 +27,7 @@ function fetchWordSync(word: string) {
   execSync(COMMAND);
 }
 
-async function downloadAudio(dictionary: T_DICTIONARY<T_ROW>) {
+async function downloadAudio(dictionary: T_DICTIONARY<T_ROWS>) {
   await forEachWord(dictionary, async (word: string) => {
     try {
       checkFileExistSync(word);
@@ -39,7 +39,7 @@ async function downloadAudio(dictionary: T_DICTIONARY<T_ROW>) {
 }
 
 export async function taskDownloadAudio() {
-  const dictionary: T_DICTIONARY<T_ROW> = readDbFromFile();
+  const dictionary: T_DICTIONARY<T_ROWS> = readDbFromFile();
 
   await downloadAudio(dictionary);
 }

@@ -2,18 +2,14 @@ import "./style.css";
 import { CollapseButton } from "../../../components/Collapse/CollapseButton/CollapseButton";
 import { T_USE_COLLAPSE_STATE } from "../../../components/Collapse/types";
 import { Tr } from "../../../components/Tr";
-import { T_RECORD, T_LAST_RECORD } from "../../../db/types";
-import { Record } from "../../../components/Record";
+import { T_ROW } from "../../../db/types";
+import { WordContainer } from "../../../components/WordContainer";
 import { useCollapseState } from "../../../components/Collapse/useCollapseState";
 import Checkbox from "@mui/material/Checkbox";
 
-export function TBodyAssociation({
-  lastRecord,
-}: {
-  lastRecord: T_LAST_RECORD;
-}) {
+export function TBodyAssociation({ row }: { row: T_ROW }) {
   const collapseStateAssociations: T_USE_COLLAPSE_STATE = useCollapseState();
-  // console.log(lastRecord);
+
   return (
     <tbody
       className={`TBodyAssociation-${
@@ -31,9 +27,9 @@ export function TBodyAssociation({
             />
           </div>
         </td>
-        <td {...(lastRecord.record.irregularVerb && { colSpan: 2 })}>
+        <td {...(row.irregularVerb && { colSpan: 2 })}>
           <div className={"TBodyAssociation__cell"}>
-            <Record record={lastRecord.record} />
+            <WordContainer row={row} />
 
             <div className={"TBodyAssociation__open-association-button"}>
               <CollapseButton
@@ -43,21 +39,19 @@ export function TBodyAssociation({
             </div>
           </div>
         </td>
-        {!lastRecord.record.irregularVerb && (
+        {!row.irregularVerb && (
           <td>
-            <span className={"transcription"}>
-              {lastRecord.record.wordSet.transcription}
-            </span>
+            <span className={"transcription"}>{row.wordSet.transcription}</span>
           </td>
         )}
         <td>
-          <span className={"translation"}>{lastRecord.record.translation}</span>
+          <span className={"translation"}>{row.translation}</span>
         </td>
       </tr>
 
       {collapseStateAssociations[0].isOpened &&
-        lastRecord.associationsExcludingTheRecord.map((record: T_RECORD) => (
-          <Tr record={record} key={record.wordSet.word} />
+        row.associations?.excludingTheRow.map((row: T_ROW) => (
+          <Tr row={row} key={row.wordSet.word} />
         ))}
     </tbody>
   );

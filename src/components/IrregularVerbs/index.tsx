@@ -1,5 +1,5 @@
 import "./style.css";
-import { T_RECORD } from "../../db/types";
+import { T_ROW } from "../../db/types";
 import { Player } from "../Player/Player";
 import { WordWithLinks } from "../WordWithLinks";
 
@@ -8,54 +8,54 @@ function getStyle(gridColumn: number, gridRow: number) {
 }
 
 export function IrregularVerbs({
-  record,
+  row,
   autoplay = false,
 }: {
-  record: T_RECORD;
+  row: T_ROW;
   autoplay?: boolean;
 }) {
-  const { dateAdded } = record;
+  const { dateAdded } = row;
 
   return (
     <div className={"IrregularVerbs"}>
       <div style={getStyle(1, 1)}>
-        <Player word={record.wordSet.word} autoplay={autoplay} />
+        <Player word={row.wordSet.word} autoplay={autoplay} />
       </div>
 
       <div style={getStyle(2, 1)}>
-        <WordWithLinks word={record.wordSet.word} dateAdded={dateAdded} />
+        <WordWithLinks word={row.wordSet.word} dateAdded={dateAdded} />
       </div>
 
       <div style={getStyle(4, 1)}>
-        <Player word={record.irregularVerb!.secondWordSet.word} />
+        <Player word={row.irregularVerb!.secondWordSet.word} />
       </div>
 
       <div style={getStyle(5, 1)}>
         <WordWithLinks
-          word={record.irregularVerb!.secondWordSet.word}
+          word={row.irregularVerb!.secondWordSet.word}
           dateAdded={dateAdded}
         />
       </div>
 
       <div style={getStyle(7, 1)}>
-        <Player word={record.irregularVerb!.thirdWordSet.word} />
+        <Player word={row.irregularVerb!.thirdWordSet.word} />
       </div>
 
       <div style={getStyle(8, 1)}>
         <WordWithLinks
-          word={record.irregularVerb!.thirdWordSet.word}
+          word={row.irregularVerb!.thirdWordSet.word}
           dateAdded={dateAdded}
         />
       </div>
 
-      <div style={getStyle(2, 2)}>{record.wordSet.transcription}</div>
+      <div style={getStyle(2, 2)}>{row.wordSet.transcription}</div>
 
       <div style={getStyle(5, 2)}>
-        {record.irregularVerb!.secondWordSet.transcription}
+        {row.irregularVerb!.secondWordSet.transcription}
       </div>
 
       <div style={getStyle(8, 2)}>
-        {record.irregularVerb!.thirdWordSet.transcription}
+        {row.irregularVerb!.thirdWordSet.transcription}
       </div>
     </div>
   );

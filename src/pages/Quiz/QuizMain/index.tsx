@@ -3,7 +3,7 @@ import {
   getRandomQuestionType,
   QUESTION_TYPE,
 } from "../question-types/questionType";
-import { T_LAST_RECORD } from "../../../db/types";
+import { T_ROW, T_ROWS } from "../../../db/types";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { DB } from "../../../db/db";
 import { SelectTranslation } from "../question-types/SelectTranslation";
@@ -11,8 +11,8 @@ import { NextRowSelector } from "./NextRowSelector";
 
 type QUIZ_STATE = {
   questionType: QUESTION_TYPE;
-  row: T_LAST_RECORD;
-  lastRows: T_LAST_RECORD[];
+  row: T_ROW;
+  lastRows: T_ROWS;
 };
 
 const nextRowSelector = new NextRowSelector();
@@ -40,7 +40,7 @@ export function QuizMain() {
           onCorrectAnswer={onCorrectAnswer}
           row={quizState.row}
           lastRows={quizState.lastRows}
-          key={quizState.row.record.wordSet.word}
+          key={quizState.row.wordSet.word}
         />
       )}
     </>

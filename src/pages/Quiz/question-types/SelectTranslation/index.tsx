@@ -1,22 +1,22 @@
 import "./style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
-import { T_LAST_RECORD, T_RECORD } from "../../../../db/types";
+import { T_ROW, T_ROWS } from "../../../../db/types";
 import { getRandomItem } from "../../../../utils/utils";
 import { DEFAULT_VARIANT_COUNT } from "../questionType";
-import { Record } from "../../../../components/Record";
+import { WordContainer } from "../../../../components/WordContainer";
 
-function insertAssociations(variants: string[], row: T_LAST_RECORD) {
-  if (row.isAssociation) {
-    row.associationsExcludingTheRecord.forEach((record: T_RECORD) => {
-      variants.push(record.translation);
+function insertAssociations(variants: string[], row: T_ROW) {
+  if (row.associations) {
+    row.associations.excludingTheRow.forEach((row: T_ROW) => {
+      variants.push(row.translation);
     });
   }
 }
 
-function insertOther(variants: string[], lastRows: T_LAST_RECORD[]) {
+function insertOther(variants: string[], lastRows: T_ROWS) {
   while (variants.length < DEFAULT_VARIANT_COUNT) {
-    const randomTranslation = getRandomItem(lastRows).record.translation;
+    const randomTranslation = getRandomItem(lastRows).translation;
 
     if (!variants.includes(randomTranslation)) {
       variants.push(randomTranslation);
@@ -24,8 +24,8 @@ function insertOther(variants: string[], lastRows: T_LAST_RECORD[]) {
   }
 }
 
-function getVariants(row: T_LAST_RECORD, lastRows: T_LAST_RECORD[]) {
-  const variants: string[] = [row.record.translation];
+function getVariants(row: T_ROW, lastRows: T_ROWS) {
+  const variants: string[] = [row.translation];
 
   insertAssociations(variants, row);
 
@@ -40,18 +40,18 @@ export function SelectTranslation({
   lastRows,
 }: {
   onCorrectAnswer: () => void;
-  row: T_LAST_RECORD;
-  lastRows: T_LAST_RECORD[];
+  row: T_ROW;
+  lastRows: T_ROWS;
 }) {
   const [answer, setAnswer] = useState<string>();
-  const isCorrect = answer === row.record.translation;
+  const isCorrect = answer === row.translation;
 
   const variants = useMemo(() => getVariants(row, lastRows), []);
 
   function onChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
     setAnswer(value);
 
-    if (value === row.record.translation) {
+    if (value === row.translation) {
       setTimeout(onCorrectAnswer, 100);
     }
   }
@@ -70,7 +70,7 @@ export function SelectTranslation({
 
   return (
     <div className={"SelectTranslation"}>
-      <Record record={row.record} autoplay />
+      <WordContainer row={row} autoplay />
 
       <ul>
         {variants.map((variant) => (

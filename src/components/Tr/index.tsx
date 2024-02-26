@@ -1,19 +1,17 @@
 import "./style.css";
-import { T_RECORD } from "../../db/types";
-import { Record } from "../Record";
+import { WordContainer } from "../WordContainer";
 import Checkbox from "@mui/material/Checkbox";
+import { T_ROW } from "../../db/types";
 
 export function Tr({
-  record,
+  row,
   isBorderTop,
   isBorderBottom,
 }: {
-  record: T_RECORD;
+  row: T_ROW;
   isBorderTop?: boolean;
   isBorderBottom?: boolean;
 }) {
-  // console.log(record);
-
   return (
     <tr
       className={`row${isBorderTop ? " border-top" : isBorderBottom ? " border-bottom" : ""}`}
@@ -27,18 +25,16 @@ export function Tr({
           />
         </div>
       </td>
-      <td {...(record.irregularVerb && { colSpan: 2 })}>
-        <Record record={record} />
+      <td {...(row.irregularVerb && { colSpan: 2 })}>
+        <WordContainer row={row} />
       </td>
-      {!record.irregularVerb && (
+      {!row.irregularVerb && (
         <td>
-          <span className={"transcription"}>
-            {record.wordSet.transcription}
-          </span>
+          <span className={"transcription"}>{row.wordSet.transcription}</span>
         </td>
       )}
       <td>
-        <span className={"translation"}>{record.translation}</span>
+        <span className={"translation"}>{row.translation}</span>
       </td>
     </tr>
   );

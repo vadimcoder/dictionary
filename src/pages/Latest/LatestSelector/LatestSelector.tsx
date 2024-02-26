@@ -3,7 +3,7 @@ import { useGlobalState } from "../../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
 import { DB } from "../../../db/db";
 
-const DAYS_AGO_MAX = DB.allRowsSorted.length;
+const LAST_ROWS_MAX = DB.flatSorted.length;
 
 export function LatestSelector() {
   const [globalState, setGlobalState] = useGlobalState();
@@ -27,7 +27,7 @@ export function LatestSelector() {
         className={"latestSelector__input"}
         type="range"
         min="1"
-        max={DAYS_AGO_MAX}
+        max={LAST_ROWS_MAX}
         value={globalState.latestLastRowsCount}
         step="1"
         id="inputRange"
