@@ -13,7 +13,7 @@
     "node-tasks-old": "rm -fr compiled && tsc && node compiled/dictionary/src/node-tasks/all.js"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
+    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@floating-ui/react": "^0.26.9",
     "@fontsource/roboto": "^5.0.8",
