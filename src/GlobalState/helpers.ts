@@ -1,4 +1,4 @@
-import { globalStateSchema, T_GLOBAL_STATE } from "./GlobalState";
+import { T_GLOBAL_STATE } from "./GlobalState";
 
 const LOCAL_STORAGE_KEY = "globalState";
 
@@ -19,15 +19,17 @@ export function getStoredState(): T_GLOBAL_STATE | null {
     return null;
   }
 
-  let globalStateDeserialized: T_GLOBAL_STATE | null;
+  const globalStateTyped = globalState as unknown as T_GLOBAL_STATE;
 
-  try {
-    globalStateDeserialized = globalStateSchema.parse(globalState);
-  } catch (e) {
-    globalStateDeserialized = null;
+  if (
+    globalStateTyped.quizLastRowsCount &&
+    globalStateTyped.latestLastRowsCount &&
+    globalStateTyped.selectedRows
+  ) {
+    return globalStateTyped;
   }
 
-  return globalStateDeserialized;
+  return null;
 }
 
 export function storeState(globalStage: T_GLOBAL_STATE) {

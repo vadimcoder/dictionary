@@ -1,6 +1,6 @@
-import { T_ROWS, T_SUBGROUP } from "../../db/types";
-import { Tr } from "../../components/Tr";
-import { DB } from "../../db/db";
+import { T_ROWS, T_SUBGROUP } from "../../../db/types";
+import { Tr } from "../../../components/Tr";
+import { DB } from "../../../db/db";
 import { ALL_NAV_ARIA } from "./index";
 
 function Associations({ rows }: { rows: T_ROWS }) {

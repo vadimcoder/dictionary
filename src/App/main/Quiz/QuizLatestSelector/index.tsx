@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./style.css";
-import { Checkbox } from "../../../components/form/Checkbox/Checkbox";
-import { InputNumber } from "../../../components/form/InputNumber/InputNumber";
-import { useGlobalState } from "../../../GlobalState/GlobalState";
+import { Checkbox } from "../../../../components/form/Checkbox/Checkbox";
+import { InputNumber } from "../../../../components/form/InputNumber/InputNumber";
+import { useGlobalState } from "../../../../GlobalState/GlobalState";
 
 export function QuizLatestSelector() {
   const [isAll, setIsAll] = useState<boolean>(false);

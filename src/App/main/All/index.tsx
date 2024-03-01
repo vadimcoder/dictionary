@@ -1,8 +1,8 @@
 import "./style.css";
 import { Link, Outlet, useMatch } from "react-router-dom";
 import { Tab, Tabs } from "@mui/material";
-import { getTabValue } from "../../utils/utils";
-import { GLOBAL_NAV_ARIA } from "../../components/NavBar/NavBar";
+import { getTabValue } from "../../../utils/utils";
+import { GLOBAL_NAV_ARIA } from "../../NavBar";
 
 const TABS: string[] = [
   "noun",
@@ -27,19 +27,21 @@ export function All() {
       id={GLOBAL_NAV_ARIA.all.contentId}
       aria-labelledby={GLOBAL_NAV_ARIA.all.tabId}
     >
-      <Tabs value={tabValue} aria-label="all-navigation">
-        {TABS.map((name) => (
-          <Tab
-            id={`${ALL_NAV_ARIA.tabId}${name}`}
-            aria-controls={`${ALL_NAV_ARIA.contentId}${name}`}
-            key={name}
-            label={name}
-            value={name}
-            to={name}
-            component={Link}
-          />
-        ))}
-      </Tabs>
+      <div className={"main-navigation"}>
+        <Tabs value={tabValue} aria-label="all-navigation">
+          {TABS.map((name) => (
+            <Tab
+              id={`${ALL_NAV_ARIA.tabId}${name}`}
+              aria-controls={`${ALL_NAV_ARIA.contentId}${name}`}
+              key={name}
+              label={name}
+              value={name}
+              to={name}
+              component={Link}
+            />
+          ))}
+        </Tabs>
+      </div>
 
       <Outlet />
     </div>

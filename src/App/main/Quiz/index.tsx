@@ -1,7 +1,7 @@
 import "./QuizLatestSelector/style.css";
 import { QuizLatestSelector } from "./QuizLatestSelector";
 import { QuizMain } from "./QuizMain";
-import { GLOBAL_NAV_ARIA } from "../../components/NavBar/NavBar";
+import { GLOBAL_NAV_ARIA } from "../../NavBar";
 
 export function Quiz() {
   return (

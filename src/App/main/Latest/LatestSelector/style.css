@@ -1,5 +1,8 @@
 .latestSelector {
     display: flex;
+    margin-block-start: 20px;
+    margin-inline-start: 10px;
+    margin-block-end: 20px;
 }
 
 .latestSelector__value {

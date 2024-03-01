@@ -1,4 +1,3 @@
-import { z } from "zod";
 import {
   createContext,
   Dispatch,
@@ -9,13 +8,13 @@ import {
   useState,
 } from "react";
 import { getStoredState, storeState } from "./helpers";
+import { T_ROWS } from "../db/types";
 
-export const globalStateSchema = z.object({
-  latestLastRowsCount: z.number(),
-  quizLastRowsCount: z.number(),
-});
-
-export type T_GLOBAL_STATE = z.infer<typeof globalStateSchema>;
+export type T_GLOBAL_STATE = {
+  latestLastRowsCount: number;
+  quizLastRowsCount: number;
+  selectedRows: T_ROWS;
+};
 
 type T_USE_GLOBAL_STATE = [
   T_GLOBAL_STATE,
@@ -25,6 +24,7 @@ type T_USE_GLOBAL_STATE = [
 const DEFAULT_STATE: T_GLOBAL_STATE = {
   latestLastRowsCount: 20,
   quizLastRowsCount: 20,
+  selectedRows: [],
 };
 
 const DEFAULT_USE_GLOBAL_STATE: T_USE_GLOBAL_STATE = [

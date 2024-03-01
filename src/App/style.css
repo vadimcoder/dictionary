@@ -3,9 +3,6 @@ body {
 }
 
 .App {
-  margin-inline-start: 10px;
-}
-
-main {
-  margin-block-start: 10px;
+  --mui-tabs-height: 48px;
+  --nav-bar-border-width: 1px;
 }

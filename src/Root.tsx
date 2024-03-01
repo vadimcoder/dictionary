@@ -4,19 +4,19 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { GlobalState } from "../GlobalState/GlobalState";
-import { All } from "../pages/All";
-import { Latest } from "../pages/Latest";
-import { Quiz } from "../pages/Quiz";
-import "./style.css";
-import { Dev } from "../pages/Dev";
-import { TabContent } from "../pages/All/TabContent";
-import { Root } from "./Root";
+import { GlobalState } from "./GlobalState/GlobalState";
+import { All } from "./App/main/All";
+import { Latest } from "./App/main/Latest";
+import { Quiz } from "./App/main/Quiz";
+import "./App/style.css";
+import { Dev } from "./App/main/Dev";
+import { TabContent } from "./App/main/All/TabContent";
+import { App } from "./App";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
 
     children: [
       {
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-export function App() {
+export function Root() {
   return (
     <StrictMode>
       <GlobalState>

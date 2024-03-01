@@ -1,7 +1,6 @@
 import "./style.css";
 import { Link, useMatch } from "react-router-dom";
 import { DirSwitcher } from "./DirSwitcher/DirSwitcher";
-import { useTheme } from "@mui/material/styles";
 import { Tab, Tabs } from "@mui/material";
 import { getTabValue } from "../../utils/utils";
 
@@ -21,12 +20,11 @@ export const GLOBAL_NAV_ARIA = {
 const URLS = Object.keys(GLOBAL_NAV_ARIA);
 
 export function NavBar() {
-  const theme = useTheme();
   const match = useMatch("/:rootUrl/*");
   const tabValue = getTabValue(URLS, match?.params?.rootUrl);
 
   return (
-    <nav style={{ borderBottom: `1px solid ${theme.palette.divider}` }}>
+    <>
       <div>
         <Tabs value={tabValue} aria-label="global site navigation">
           {Object.entries(GLOBAL_NAV_ARIA).map(
@@ -46,6 +44,6 @@ export function NavBar() {
       </div>
 
       <DirSwitcher />
-    </nav>
+    </>
   );
 }

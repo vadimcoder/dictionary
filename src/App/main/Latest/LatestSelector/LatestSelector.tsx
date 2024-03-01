@@ -1,7 +1,7 @@
 import "./style.css";
-import { useGlobalState } from "../../../GlobalState/GlobalState";
+import { useGlobalState } from "../../../../GlobalState/GlobalState";
 import { ChangeEvent } from "react";
-import { DB } from "../../../db/db";
+import { DB } from "../../../../db/db";
 
 const LAST_ROWS_MAX = DB.flatSorted.length;
 

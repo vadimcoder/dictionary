@@ -1,6 +1,6 @@
 import { LatestSelector } from "./LatestSelector/LatestSelector";
 import { LatestList } from "./LatestList";
-import { GLOBAL_NAV_ARIA } from "../../components/NavBar/NavBar";
+import { GLOBAL_NAV_ARIA } from "../../NavBar";
 
 export function Latest() {
   return (

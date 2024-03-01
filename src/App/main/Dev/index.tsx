@@ -1,6 +1,6 @@
-import { Styleguide } from "../../components/Styleguide";
-import { DB } from "../../db/db";
-import { GLOBAL_NAV_ARIA } from "../../components/NavBar/NavBar";
+import { Styleguide } from "../../../components/Styleguide";
+import { DB } from "../../../db/db";
+import { GLOBAL_NAV_ARIA } from "../../NavBar";
 
 export function Dev() {
   return (

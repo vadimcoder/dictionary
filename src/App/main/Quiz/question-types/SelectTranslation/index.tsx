@@ -1,10 +1,10 @@
 import "./style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
-import { T_ROW, T_ROWS } from "../../../../db/types";
-import { getRandomItem } from "../../../../utils/utils";
+import { T_ROW, T_ROWS } from "../../../../../db/types";
+import { getRandomItem } from "../../../../../utils/utils";
 import { DEFAULT_VARIANT_COUNT } from "../questionType";
-import { WordContainer } from "../../../../components/WordContainer";
+import { WordContainer } from "../../../../../components/WordContainer";
 
 function insertAssociations(variants: string[], row: T_ROW) {
   if (row.associations) {

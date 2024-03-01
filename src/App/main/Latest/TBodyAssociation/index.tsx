@@ -1,10 +1,10 @@
 import "./style.css";
-import { CollapseButton } from "../../../components/Collapse/CollapseButton/CollapseButton";
-import { T_USE_COLLAPSE_STATE } from "../../../components/Collapse/types";
-import { Tr } from "../../../components/Tr";
-import { T_ROW } from "../../../db/types";
-import { WordContainer } from "../../../components/WordContainer";
-import { useCollapseState } from "../../../components/Collapse/useCollapseState";
+import { CollapseButton } from "../../../../components/Collapse/CollapseButton/CollapseButton";
+import { T_USE_COLLAPSE_STATE } from "../../../../components/Collapse/types";
+import { Tr } from "../../../../components/Tr";
+import { T_ROW } from "../../../../db/types";
+import { WordContainer } from "../../../../components/WordContainer";
+import { useCollapseState } from "../../../../components/Collapse/useCollapseState";
 import Checkbox from "@mui/material/Checkbox";
 
 export function TBodyAssociation({ row }: { row: T_ROW }) {

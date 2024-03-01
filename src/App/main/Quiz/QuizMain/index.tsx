@@ -3,9 +3,9 @@ import {
   getRandomQuestionType,
   QUESTION_TYPE,
 } from "../question-types/questionType";
-import { T_ROW, T_ROWS } from "../../../db/types";
-import { useGlobalState } from "../../../GlobalState/GlobalState";
-import { DB } from "../../../db/db";
+import { T_ROW, T_ROWS } from "../../../../db/types";
+import { useGlobalState } from "../../../../GlobalState/GlobalState";
+import { DB } from "../../../../db/db";
 import { SelectTranslation } from "../question-types/SelectTranslation";
 import { NextRowSelector } from "./NextRowSelector";
 

@@ -1,9 +1,9 @@
 import { TBodyAssociation } from "../TBodyAssociation";
-import { DB } from "../../../db/db";
-import { T_ROW } from "../../../db/types";
-import { Tr } from "../../../components/Tr";
+import { DB } from "../../../../db/db";
+import { T_ROW } from "../../../../db/types";
+import { Tr } from "../../../../components/Tr";
 import "./style.css";
-import { useGlobalState } from "../../../GlobalState/GlobalState";
+import { useGlobalState } from "../../../../GlobalState/GlobalState";
 
 export function LatestList() {
   const [globalState] = useGlobalState();
