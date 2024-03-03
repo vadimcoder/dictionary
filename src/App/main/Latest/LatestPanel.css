@@ -1,0 +1,21 @@
+@media (width > 800px) {
+  .LatestPanel {
+    display: grid;
+    grid-template-columns: auto 200px;
+    align-items: center;
+    gap: 30px;
+    padding-inline-end: 30px;
+  }
+}
+
+@media (width <= 800px) {
+  .LatestPanel {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 20px;
+  }
+
+  .LatestPanel__button {
+    margin-inline: 30px !important;
+  }
+}
