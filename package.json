@@ -36,7 +36,7 @@
     "@types/lodash.random": "^3.2.9",
     "@types/lodash.shuffle": "^4.2.9",
     "@types/lodash.uniq": "^4.5.9",
-    "@types/react": "^18.2.58",
+    "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
