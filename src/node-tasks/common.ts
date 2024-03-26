@@ -3,7 +3,7 @@ import { prettify } from "./prettify.js";
 import { T_DICTIONARY, T_ROW, T_ROWS, T_ROW_RAW } from "../db/types";
 import { deserializeDictionary, serializeDictionary } from "../db/db.js";
 
-export const PATH = "../private/dictionary.json";
+export const PATH = "../dictionary-data/dictionary.json";
 
 export function readDbFromFile(): T_DICTIONARY<T_ROWS> {
   const dictionaryRaw: T_DICTIONARY<T_ROW_RAW | T_ROW_RAW[]> = JSON.parse(

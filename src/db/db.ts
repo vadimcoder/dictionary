@@ -1,4 +1,4 @@
-import dictionaryRaw from "../../../private/dictionary.json" assert { type: "json" };
+import dictionaryRaw from "../../../dictionary-data/dictionary.json" assert { type: "json" };
 import { parseISO, formatISO } from "date-fns";
 import {
   T_DICTIONARY,
