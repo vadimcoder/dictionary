@@ -44,6 +44,10 @@ const router = createBrowserRouter([
             element: <TabContent groupName={"preposition"} />,
           },
           {
+            path: "conjunction",
+            element: <TabContent groupName={"conjunction"} />,
+          },
+          {
             path: "irregular-verbs",
             element: <TabContent groupName={"irregular-verbs"} />,
           },

@@ -10,6 +10,7 @@ const TABS: string[] = [
   "verb",
   "adverb",
   "preposition",
+  "conjunction",
   "irregular-verbs",
 ] as const;
 
