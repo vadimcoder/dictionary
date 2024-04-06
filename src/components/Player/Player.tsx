@@ -23,7 +23,7 @@ export function Player({
 
   return (
     <div className={"player"}>
-      <audio src={`audio/${getFilename(word)}`} preload="none" ref={audio} />
+      <audio src={`/audio/${getFilename(word)}`} preload="none" ref={audio} />
       <button onClick={play} className={"player__button"} title="Play">
         <span aria-hidden="true">▶</span>
       </button>
