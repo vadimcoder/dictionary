@@ -15,6 +15,14 @@ export function Tr({
 }) {
   const [globalState, setGlobalState] = useGlobalState();
 
+  function isChecked(): boolean {
+    return (
+      globalState.selectedRows.find(
+        (row$) => row$.wordSet.word === row.wordSet.word,
+      ) !== undefined
+    );
+  }
+
   return (
     <tr
       className={`row${isBorderTop ? " border-top" : isBorderBottom ? " border-bottom" : ""}`}
@@ -22,18 +30,17 @@ export function Tr({
       <td>
         <div style={{ paddingInlineEnd: "10px" }}>
           <Checkbox
-            checked={
-              globalState.selectedRows.find(
-                (row$) => row$.wordSet.word === row.wordSet.word,
-              ) !== undefined
-            }
-            onChange={() => {
-              setGlobalState((state) => {
-                return {
-                  ...state,
-                  selectedRows: [...state.selectedRows, row],
-                };
-              });
+            checked={isChecked()}
+            onChange={(_event, checked) => {
+              if (checked) {
+                setGlobalState((state) => {
+                  return {
+                    ...state,
+                    selectedRows: [...state.selectedRows, row],
+                  };
+                });
+              } else {
+              }
             }}
             size="small"
           />
