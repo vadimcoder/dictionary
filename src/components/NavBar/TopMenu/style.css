@@ -9,6 +9,7 @@
     --width: 30px;
     gap: var(--width);
     padding-inline-start: var(--width);
+    height: 40px;
   }
 }
 
@@ -17,6 +18,7 @@
     font-size: 36px;
     margin-block-start: 10px;
     justify-content: space-around;
+    height: 60px;
   }
 }
 
