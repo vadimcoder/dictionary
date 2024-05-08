@@ -8,5 +8,9 @@ tr {
 
 td {
   padding: 6px 0;
-  vertical-align: top;
 }
+
+/*html, body {*/
+/*  !*width: 100%;*!*/
+/*  max-width: 100%*/
+/*}*/

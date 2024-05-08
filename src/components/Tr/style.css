@@ -1,7 +1,19 @@
-.border-top {
+.row {
+  height: 60px;
+  vertical-align: middle;
+}
+
+/*@media (width <= 800px) {*/
+/*  .row {*/
+/*    height: 80px;*/
+/*  }*/
+/*}*/
+
+.row_border-top {
     border-top: 1px solid black;
 }
 
-.border-bottom {
+.row_border-bottom {
     border-bottom: 1px solid black;
 }
+

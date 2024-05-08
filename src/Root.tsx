@@ -5,13 +5,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { GlobalState } from "./GlobalState/GlobalState";
-import { All } from "./App/main/All";
-import { Latest } from "./App/main/Latest";
-import { Quiz } from "./App/main/Quiz";
-import "./App/style.css";
-import { Dev } from "./App/main/Dev";
-import { TabContent } from "./App/main/All/TabContent";
-import { App } from "./App";
+import { All } from "./tabs/All";
+import { Latest } from "./tabs/Latest";
+import { Quiz } from "./tabs/Quiz";
+import "./components/App/style.css";
+import { Dev } from "./tabs/Dev";
+import { TabContent } from "./tabs/All/TabContent";
+import { App } from "./components/App";
 
 const router = createBrowserRouter([
   {

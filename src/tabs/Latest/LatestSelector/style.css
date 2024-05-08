@@ -1,0 +1,15 @@
+.latestSelector {
+  display: flex;
+  gap: 30px;
+}
+
+.latestSelector__button {
+  width: 50px;
+  font-size: 1em;
+}
+
+.latestSelector__value {
+  width: 70px;
+  font-size: 1em;
+}
+

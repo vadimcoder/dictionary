@@ -1,4 +1,4 @@
-import { DEFAULT_VARIANT_COUNT } from "../../../App/main/Quiz/question-types/questionType";
+import { DEFAULT_VARIANT_COUNT } from "../../../tabs/Quiz/question-types/questionType";
 import "./style.css";
 
 export function InputNumber({

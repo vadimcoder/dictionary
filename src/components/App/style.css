@@ -1,0 +1,5 @@
+.App {
+  --mui-tabs-height: 48px;
+  --nav-bar-border-width: 1px;
+  min-width: min-content;
+}

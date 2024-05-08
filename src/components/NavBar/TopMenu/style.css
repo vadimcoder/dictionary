@@ -1,0 +1,22 @@
+.TopMenu {
+  display: flex;
+  flex-grow: 1;
+}
+
+@media (width > 800px) {
+  .TopMenu {
+    font-size: 26px;
+    --width: 30px;
+    gap: var(--width);
+    padding-inline-start: var(--width);
+  }
+}
+
+@media (width <= 800px) {
+  .TopMenu {
+    font-size: 36px;
+    margin-block-start: 10px;
+    justify-content: space-around;
+  }
+}
+

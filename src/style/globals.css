@@ -16,6 +16,10 @@
   }
 }
 
+body {
+  margin: 0;
+}
+
 input {
   border: 0.15em solid var(--color-form-control);
   border-radius: var(--radius);

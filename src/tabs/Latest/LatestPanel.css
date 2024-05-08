@@ -1,0 +1,22 @@
+.LatestPanel {
+  display: flex;
+  gap: 50px;
+  height: 40px;
+  margin-block-start: 30px;
+  margin-block-end: 15px;
+  margin-inline-start: 30px;
+  font-size: 18px;
+}
+
+.LatestPanel__shuffle-rows {
+  padding-inline-start: 15px;
+  padding-inline-end: 15px;
+  font-size: 1em;
+}
+
+@media (width <= 800px) {
+  .LatestPanel {
+    height: 60px;
+    font-size: 26px;
+  }
+}

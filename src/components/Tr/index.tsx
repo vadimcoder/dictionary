@@ -1,6 +1,5 @@
 import "./style.css";
 import { WordContainer } from "../WordContainer";
-import Checkbox from "@mui/material/Checkbox";
 import { T_ROW } from "../../db/types";
 import { useGlobalState } from "../../GlobalState/GlobalState";
 
@@ -25,25 +24,25 @@ export function Tr({
 
   return (
     <tr
-      className={`row${isBorderTop ? " border-top" : isBorderBottom ? " border-bottom" : ""}`}
+      className={`row ${isBorderTop ? "row_border-top" : isBorderBottom ? "row_border-bottom" : ""}`}
     >
       <td>
         <div style={{ paddingInlineEnd: "10px" }}>
-          <Checkbox
-            checked={isChecked()}
-            onChange={(_event, checked) => {
-              if (checked) {
-                setGlobalState((state) => {
-                  return {
-                    ...state,
-                    selectedRows: [...state.selectedRows, row],
-                  };
-                });
-              } else {
-              }
-            }}
-            size="small"
-          />
+          {/*<Checkbox*/}
+          {/*  checked={isChecked()}*/}
+          {/*  onChange={(_event, checked) => {*/}
+          {/*    if (checked) {*/}
+          {/*      setGlobalState((state) => {*/}
+          {/*        return {*/}
+          {/*          ...state,*/}
+          {/*          selectedRows: [...state.selectedRows, row],*/}
+          {/*        };*/}
+          {/*      });*/}
+          {/*    } else {*/}
+          {/*    }*/}
+          {/*  }}*/}
+          {/*  size="small"*/}
+          {/*/>*/}
         </div>
       </td>
       <td {...(row.irregularVerb && { colSpan: 2 })}>

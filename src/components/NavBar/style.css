@@ -1,0 +1,8 @@
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 20px;
+  background-color: white;
+  justify-content: space-between;
+}
