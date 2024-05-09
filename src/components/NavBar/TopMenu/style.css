@@ -1,24 +1,25 @@
 .TopMenu {
   display: flex;
   flex-grow: 1;
+  height: var(--top-tabs-height);
 }
 
 @media (width > 800px) {
   .TopMenu {
     font-size: 26px;
+    line-height: 26px;
     --width: 30px;
     gap: var(--width);
+    padding-block-start: 4px;
     padding-inline-start: var(--width);
-    height: 40px;
   }
 }
 
 @media (width <= 800px) {
   .TopMenu {
     font-size: 36px;
-    margin-block-start: 10px;
+    margin-block-start: 5px;
     justify-content: space-around;
-    height: 60px;
   }
 }
 

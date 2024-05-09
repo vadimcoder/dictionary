@@ -1,5 +1,15 @@
 .App {
-  --mui-tabs-height: 48px;
-  --nav-bar-border-width: 1px;
   min-width: min-content;
+}
+
+@media (width > 800px) {
+  .App {
+    --top-tabs-height: 35px;
+  }
+}
+
+@media (width <= 800px) {
+  .App {
+    --top-tabs-height: 55px;
+  }
 }

@@ -29,19 +29,16 @@ export function All() {
       aria-labelledby={GLOBAL_NAV_ARIA.all.tabId}
     >
       <div className={"main-navigation"}>
-        {/*<Tabs value={tabValue} aria-label="all-navigation">*/}
-        {/*  {TABS.map((name) => (*/}
-        {/*    <Tab*/}
-        {/*      id={`${ALL_NAV_ARIA.tabId}${name}`}*/}
-        {/*      aria-controls={`${ALL_NAV_ARIA.contentId}${name}`}*/}
-        {/*      key={name}*/}
-        {/*      label={name}*/}
-        {/*      value={name}*/}
-        {/*      to={name}*/}
-        {/*      component={Link}*/}
-        {/*    />*/}
-        {/*  ))}*/}
-        {/*</Tabs>*/}
+        {TABS.map((name) => (
+          <Link
+            id={`${ALL_NAV_ARIA.tabId}${name}`}
+            aria-controls={`${ALL_NAV_ARIA.contentId}${name}`}
+            key={name}
+            to={name}
+          >
+            {name}
+          </Link>
+        ))}
       </div>
 
       <Outlet />

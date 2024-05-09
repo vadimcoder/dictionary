@@ -2,12 +2,13 @@
   --padding-block-start: 10px;
 
   /*position: sticky;*/
-  top: calc(var(--mui-tabs-height) + var(--nav-bar-border-width));
+  top: var(--top-tabs-height);
   background-color: white;
   padding-block-start: var(--padding-block-start);
   height: calc(var(--mui-tabs-height) + var(--padding-block-start));
   z-index: 1;
-  box-shadow: 0 5px 3px 0 rgba(0,0,0,0.12);
+  /*box-shadow: 0 5px 3px 0 rgba(0,0,0,0.12);*/
+  box-shadow: 0 10px 24px 0 rgba(0,0,0,0.12);
 }
 
 .subgroup {
