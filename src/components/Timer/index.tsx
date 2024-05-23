@@ -2,7 +2,7 @@ import { useEffect, useState, Dispatch, useRef, RefObject } from "react";
 import "./style.css";
 import { format } from "date-fns";
 
-const INTERVALS = [1, 1, 1] as const; // in minutes
+const INTERVALS = [40, 15, 30] as const; // in minutes
 
 function tick(
   currentIndex: number,
@@ -24,7 +24,7 @@ function runIntervals(
   setTimer: Dispatch<string>,
   audio: RefObject<HTMLAudioElement>,
 ) {
-  const intervalsMillis = intervals.map((interval) => interval * 6000);
+  const intervalsMillis = intervals.map((interval) => interval * 60000);
   const intervalsFormatted = intervalsMillis.map((interval) =>
     format(interval, "mm:ss"),
   );
