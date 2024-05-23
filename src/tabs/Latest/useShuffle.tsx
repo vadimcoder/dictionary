@@ -4,7 +4,7 @@ import { DB } from "../../db/db";
 import { useEffect, useState } from "react";
 import shuffle from "lodash.shuffle";
 
-export function useShuffle(): [T_ROWS, () => void] {
+export function useShuffle(): [T_ROWS, () => void, () => void] {
   const [globalState] = useGlobalState();
   const lastRows = DB.getLastRows(globalState.latestLastRowsCount);
 
@@ -20,5 +20,9 @@ export function useShuffle(): [T_ROWS, () => void] {
     setRows((rows) => shuffle(rows));
   }
 
-  return [rows, shuffleRows];
+  function resetShuffle() {
+    setRows(lastRows);
+  }
+
+  return [rows, shuffleRows, resetShuffle];
 }

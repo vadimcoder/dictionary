@@ -5,7 +5,7 @@ import { useShuffle } from "./useShuffle";
 import { GLOBAL_NAV_ARIA } from "../../components/NavBar/TopMenu";
 
 export function Latest() {
-  const [rows, shuffleRows] = useShuffle();
+  const [rows, shuffleRows, resetShuffle] = useShuffle();
 
   return (
     <div
@@ -16,9 +16,17 @@ export function Latest() {
         <button
           type="button"
           onClick={shuffleRows}
-          className={"LatestPanel__shuffle-rows"}
+          className={"LatestPanel__shuffle-buttons"}
         >
-          Shuffle rows
+          Shuffle
+        </button>
+
+        <button
+          type="button"
+          onClick={resetShuffle}
+          className={"LatestPanel__shuffle-buttons"}
+        >
+          Reset
         </button>
 
         <LatestSelector />

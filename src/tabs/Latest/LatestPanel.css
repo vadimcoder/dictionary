@@ -8,9 +8,9 @@
   font-size: 18px;
 }
 
-.LatestPanel__shuffle-rows {
-  padding-inline-start: 15px;
-  padding-inline-end: 15px;
+.LatestPanel__shuffle-buttons {
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
   font-size: 1em;
 }
 
