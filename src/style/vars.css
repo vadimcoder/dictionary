@@ -4,8 +4,9 @@
 
   --color-pink: hsl(315deg 100% 80%);
 
-  --color-form-control: hsl(0, 0%, 53%);
-  --color-form-control-disabled: lightgray;
+  --color-gray-1: hsl(0, 0%, 53%);
+  --color-gray-2: #e0e0e0;
+  --color-gray-3: #e0e0e0ff;
 
   --color-red: red;
   --color-red-softer: hsl(0 100% 95%);

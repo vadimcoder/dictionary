@@ -21,7 +21,7 @@ body {
 }
 
 input {
-  border: 0.15em solid var(--color-form-control);
+  border: 0.15em solid var(--color-gray-1);
   border-radius: var(--radius);
 }
 
@@ -29,6 +29,10 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.transcription {
+  color: var(--color-gray-3);
 }
 
 .transcription, .translation {
