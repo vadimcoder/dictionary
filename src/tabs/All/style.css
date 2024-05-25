@@ -5,8 +5,8 @@
   height: 50px;
   top: var(--top-tabs-height);
   background-color: white;
-  margin-block-start: 10px;
-  margin-inline-start: 10px;
+  padding-block-start: 10px;
+  padding-inline-start: 10px;
 
 }
 
