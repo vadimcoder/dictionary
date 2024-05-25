@@ -2,13 +2,13 @@
   min-width: min-content;
 }
 
-@media (width > 800px) {
+@media (min-width: 801px) { /* >= */
   .App {
     --top-tabs-height: 35px;
   }
 }
 
-@media (width <= 800px) {
+@media (max-width: 800px) { /* <= */
   .App {
     --top-tabs-height: 55px;
   }

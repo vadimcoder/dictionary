@@ -3,7 +3,7 @@
   vertical-align: middle;
 }
 
-@media (width <= 800px) {
+@media (max-width: 800px) { /* <= */
   .row {
     height: 80px;
   }
