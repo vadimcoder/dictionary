@@ -5,20 +5,22 @@ export function Checkbox({
   value,
   onChange,
 }: {
-  label: string;
+  label?: string;
   value: boolean;
   onChange: (value: boolean) => void;
 }) {
   return (
-    <label className={"Checkbox"}>
-      <input
-        type={"checkbox"}
-        checked={value}
-        onChange={({ target: { checked } }) => {
-          onChange(checked);
-        }}
-      />
-      {label}
-    </label>
+    <form>
+      <label className={"Checkbox"}>
+        <input
+          type={"checkbox"}
+          checked={value}
+          onChange={({ target: { checked } }) => {
+            onChange(checked);
+          }}
+        />
+        {label}
+      </label>
+    </form>
   );
 }

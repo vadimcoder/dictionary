@@ -1,6 +1,5 @@
 import "./style.css";
-import { Link, Outlet, useMatch } from "react-router-dom";
-import { getTabValue } from "../../utils/utils";
+import { Link, Outlet } from "react-router-dom";
 
 import { GLOBAL_NAV_ARIA } from "../../components/NavBar/TopMenu";
 
@@ -20,9 +19,6 @@ export const ALL_NAV_ARIA = {
 };
 
 export function All() {
-  const match = useMatch("/all/:path");
-  const tabValue = getTabValue(TABS, match?.params?.path);
-
   return (
     <div
       id={GLOBAL_NAV_ARIA.all.contentId}

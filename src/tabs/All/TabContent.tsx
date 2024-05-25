@@ -2,6 +2,8 @@ import { T_ROWS, T_SUBGROUP } from "../../db/types";
 import { Tr } from "../../components/Tr";
 import { DB } from "../../db/db";
 import { ALL_NAV_ARIA } from "./index";
+import { useEffect } from "react";
+import { scrollToChecked } from "../../utils/utils";
 
 function Associations({ rows }: { rows: T_ROWS }) {
   return (
@@ -45,11 +47,15 @@ function SubgroupItem({ subgroupItem }: { subgroupItem: T_SUBGROUP<T_ROWS> }) {
 export function TabContent({ groupName }: { groupName: string }) {
   const group = DB.dictionary.find((group) => group.groupName === groupName);
 
+  useEffect(scrollToChecked, [groupName]);
+
   return (
     <div
       id={`${ALL_NAV_ARIA.contentId}${groupName}`}
       aria-labelledby={`${ALL_NAV_ARIA.tabId}${groupName}`}
     >
+      <button onClick={scrollToChecked}>Scroll to last word</button>
+
       {group ? (
         <table cellSpacing={0}>
           <tbody>

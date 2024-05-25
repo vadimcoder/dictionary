@@ -5,7 +5,7 @@ import { Tr } from "../../../components/Tr";
 import { T_ROW } from "../../../db/types";
 import { WordContainer } from "../../../components/WordContainer";
 import { useCollapseState } from "../../../components/Collapse/useCollapseState";
-// import Checkbox from "@mui/material/Checkbox";
+import { CheckStopRow } from "../../../components/CheckStopRow";
 
 export function TBodyAssociation({ row }: { row: T_ROW }) {
   const collapseStateAssociations: T_USE_COLLAPSE_STATE = useCollapseState();
@@ -17,16 +17,6 @@ export function TBodyAssociation({ row }: { row: T_ROW }) {
       }`}
     >
       <tr className={"row"}>
-        <td>
-          <div style={{ paddingInlineEnd: "10px" }}>
-            {/*<Checkbox*/}
-            {/*  // checked={false}*/}
-            {/*  // onChange={() => {}}*/}
-            {/*  size="small"*/}
-            {/*  defaultChecked*/}
-            {/*/>*/}
-          </div>
-        </td>
         <td {...(row.irregularVerb && { colSpan: 2 })}>
           <div className={"TBodyAssociation__cell"}>
             <WordContainer row={row} />
@@ -46,6 +36,10 @@ export function TBodyAssociation({ row }: { row: T_ROW }) {
         )}
         <td>
           <span className={"translation"}>{row.translation}</span>
+        </td>
+
+        <td>
+          <CheckStopRow row={row} />
         </td>
       </tr>
 

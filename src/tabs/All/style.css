@@ -1,14 +1,19 @@
 .main-navigation {
-  --padding-block-start: 10px;
-
-  /*position: sticky;*/
+  position: sticky;
+  display: flex;
+  gap: 20px;
+  height: 50px;
   top: var(--top-tabs-height);
   background-color: white;
-  padding-block-start: var(--padding-block-start);
-  height: calc(var(--mui-tabs-height) + var(--padding-block-start));
-  z-index: 1;
-  /*box-shadow: 0 5px 3px 0 rgba(0,0,0,0.12);*/
-  box-shadow: 0 10px 24px 0 rgba(0,0,0,0.12);
+  margin-block-start: 10px;
+  margin-inline-start: 10px;
+
+}
+
+@media (max-width: 800px) {
+  .main-navigation {
+    font-size: 150%;
+  }
 }
 
 .subgroup {

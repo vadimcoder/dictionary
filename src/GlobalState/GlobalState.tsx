@@ -8,12 +8,12 @@ import {
   useState,
 } from "react";
 import { getStoredState, storeState } from "./helpers";
-import { T_ROWS } from "../db/types";
+import { T_ROW } from "../db/types";
 
 export type T_GLOBAL_STATE = {
   latestLastRowsCount: number;
   quizLastRowsCount: number;
-  selectedRows: T_ROWS;
+  stoppedRow?: T_ROW;
 };
 
 type T_USE_GLOBAL_STATE = [
@@ -24,7 +24,6 @@ type T_USE_GLOBAL_STATE = [
 const DEFAULT_STATE: T_GLOBAL_STATE = {
   latestLastRowsCount: 20,
   quizLastRowsCount: 20,
-  selectedRows: [],
 };
 
 const DEFAULT_USE_GLOBAL_STATE: T_USE_GLOBAL_STATE = [
