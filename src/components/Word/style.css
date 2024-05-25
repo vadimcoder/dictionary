@@ -1,4 +1,5 @@
 .Word {
-  font-size: var(--fontSize);
   display: flex;
+  align-items: center;
+  font-size: var(--fontSize);
 }

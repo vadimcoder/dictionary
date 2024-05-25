@@ -1,4 +1,6 @@
 .player__button {
+  width: 40px;
+  height: 40px;
   margin-inline-end: 10px;
   color: var(--color-gray-1);
 }
