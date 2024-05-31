@@ -6,6 +6,8 @@ import { T_ROW, T_ROWS } from "../../../../db/types";
 import { getRandomItem } from "../../../../utils/utils";
 import { DEFAULT_VARIANT_COUNT } from "../questionType";
 import { WordContainer } from "../../../../components/WordContainer";
+import { DB } from "../../../../db/db";
+import { useGlobalState } from "../../../../GlobalState/GlobalState";
 
 function insertAssociations(variants: string[], row: T_ROW) {
   if (row.associations) {
@@ -38,16 +40,20 @@ function getVariants(row: T_ROW, lastRows: T_ROWS) {
 export function SelectTranslation({
   onCorrectAnswer,
   row,
-  lastRows,
 }: {
   onCorrectAnswer: () => void;
   row: T_ROW;
-  lastRows: T_ROWS;
 }) {
+  const {
+    quiz: { lastRowsCount },
+  } = useGlobalState()[0];
   const [answer, setAnswer] = useState<string>();
   const isCorrect = answer === row.translation;
 
-  const variants = useMemo(() => getVariants(row, lastRows), []);
+  const variants = useMemo(
+    () => getVariants(row, DB.getLastRows(lastRowsCount)),
+    [],
+  );
 
   function onChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
     setAnswer(value);

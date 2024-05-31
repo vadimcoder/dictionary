@@ -15,11 +15,11 @@ export function EnterForeignWord({
 
   const isCorrect = value === row.wordSet.word;
 
-  if (isCorrect) {
-    setTimeout(() => {
-      onCorrectAnswer();
-    }, 400);
-  }
+  // if (isCorrect) {
+  //   setTimeout(() => {
+  //     onCorrectAnswer();
+  //   }, 400);
+  // }
 
   return (
     <>
@@ -38,6 +38,10 @@ export function EnterForeignWord({
           onClick={() => (isAnswerShown ? showAnswer(false) : showAnswer(true))}
         >
           Toggle answer
+        </button>
+
+        <button type={"button"} onClick={onCorrectAnswer} disabled={!isCorrect}>
+          Next
         </button>
       </form>
 

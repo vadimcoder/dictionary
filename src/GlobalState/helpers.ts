@@ -21,10 +21,7 @@ export function getStoredState(): T_GLOBAL_STATE | null {
 
   const globalStateTyped = globalState as unknown as T_GLOBAL_STATE;
 
-  if (
-    globalStateTyped.quizLastRowsCount &&
-    globalStateTyped.latestLastRowsCount
-  ) {
+  if (globalStateTyped.latestLastRowsCount && globalStateTyped.quiz) {
     return globalStateTyped;
   }
 

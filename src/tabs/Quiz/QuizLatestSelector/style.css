@@ -1,6 +1,6 @@
 .QuizLatestSelector {
-  display: grid;
-  grid-template-columns: 100px 1fr;
+  display: flex;
+  gap: 20px;
   padding: 10px;
 
   border: 1px solid var(--color-gray-1);

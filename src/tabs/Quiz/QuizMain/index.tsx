@@ -1,12 +1,7 @@
 import { useState } from "react";
-import {
-  getRandomQuestionType,
-  QUESTION_TYPE,
-  QUESTIONS,
-} from "../question-types/questionType";
-import { T_ROW, T_ROWS } from "../../../db/types";
+import { QUESTION_TYPE, QUESTIONS } from "../question-types/questionType";
+import { T_ROW } from "../../../db/types";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
-import { DB } from "../../../db/db";
 import { SelectTranslation } from "../question-types/SelectTranslation";
 import { NextRowSelector } from "../NextRowSelector";
 import { QuizLatestSelector } from "../QuizLatestSelector";
@@ -14,37 +9,34 @@ import { Select } from "../../../components/form/Select";
 import { EnterForeignWord } from "../question-types/EnterForeignWord";
 import "./style.css";
 
-const nextRowSelector = new NextRowSelector();
-
 export function QuizMain() {
-  const { quizLastRowsCount } = useGlobalState()[0];
+  const {
+    quiz: { lastRowsCount, isUnique },
+  } = useGlobalState()[0];
   const [questionType, setQuestionType] = useState<QUESTION_TYPE>(
     QUESTION_TYPE.ENTER_FOREIGN_WORD,
   );
-  const [nextRow, setNextRow] = useState<T_ROW>(
-    nextRowSelector.get(quizLastRowsCount),
+  const [nextRowSelector, setNextRowSelector] = useState(
+    () => new NextRowSelector(isUnique, lastRowsCount),
   );
 
-  const [lastRows, setLastRows] = useState<T_ROWS>(
-    DB.getLastRows(quizLastRowsCount),
-  );
+  const [nextRow, setNextRow] = useState<T_ROW>(() => nextRowSelector.get());
 
   function onCorrectAnswer() {
-    setNextRow(nextRowSelector.get(quizLastRowsCount));
-  }
-
-  function onChangeLastRows() {
-    setLastRows(DB.getLastRows(quizLastRowsCount));
+    setNextRow(nextRowSelector.get());
   }
 
   function onQuestionTypeChange(questionType: number) {
     setQuestionType(questionType);
-    console.log(typeof questionType);
+  }
+
+  function onChangeQuiz(lastRowsCount: number, isUnique: boolean) {
+    setNextRowSelector(new NextRowSelector(isUnique, lastRowsCount));
   }
 
   return (
     <div className={"QuizMain"}>
-      <QuizLatestSelector onChangeLastRows={onChangeLastRows} />
+      <QuizLatestSelector onChange={onChangeQuiz} />
 
       <div className={"QuizMainSelectContainer"}>
         <Select
@@ -66,7 +58,6 @@ export function QuizMain() {
         <SelectTranslation
           onCorrectAnswer={onCorrectAnswer}
           row={nextRow}
-          lastRows={lastRows}
           key={nextRow.wordSet.word}
         />
       )}

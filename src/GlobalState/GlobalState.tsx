@@ -12,7 +12,10 @@ import { T_ROW } from "../db/types";
 
 export type T_GLOBAL_STATE = {
   latestLastRowsCount: number;
-  quizLastRowsCount: number;
+  quiz: {
+    lastRowsCount: number;
+    isUnique: boolean;
+  };
   stoppedRow?: T_ROW;
 };
 
@@ -23,7 +26,10 @@ type T_USE_GLOBAL_STATE = [
 
 const DEFAULT_STATE: T_GLOBAL_STATE = {
   latestLastRowsCount: 20,
-  quizLastRowsCount: 20,
+  quiz: {
+    lastRowsCount: 20,
+    isUnique: true,
+  },
 };
 
 const DEFAULT_USE_GLOBAL_STATE: T_USE_GLOBAL_STATE = [

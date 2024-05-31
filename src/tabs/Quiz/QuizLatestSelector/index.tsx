@@ -5,19 +5,33 @@ import { InputNumber } from "../../../components/form/InputNumber/InputNumber";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 
 export function QuizLatestSelector({
-  onChangeLastRows,
+  onChange,
 }: {
-  onChangeLastRows: (quizLastRowsCount: number) => void;
+  onChange: (lastRowsCount: number, isUnique: boolean) => void;
 }) {
   const [isAll, setIsAll] = useState<boolean>(false);
   const [globalState, setGlobalState] = useGlobalState();
 
-  function onChange(quizLastRowsCount: number) {
+  function onChangeLastRowsCount(lastRowsCount: number) {
     setGlobalState((oldState) => ({
       ...oldState,
-      quizLastRowsCount,
+      quiz: {
+        ...oldState.quiz,
+        lastRowsCount,
+      },
     }));
-    onChangeLastRows(quizLastRowsCount);
+    onChange(lastRowsCount, globalState.quiz.isUnique);
+  }
+
+  function onChangeUnique(isUnique: boolean) {
+    setGlobalState((oldState) => ({
+      ...oldState,
+      quiz: {
+        ...oldState.quiz,
+        isUnique,
+      },
+    }));
+    onChange(globalState.quiz.lastRowsCount, isUnique);
   }
 
   return (
@@ -26,10 +40,16 @@ export function QuizLatestSelector({
 
       {!isAll && (
         <InputNumber
-          value={globalState.quizLastRowsCount}
-          onChange={onChange}
+          value={globalState.quiz.lastRowsCount}
+          onChange={onChangeLastRowsCount}
         />
       )}
+
+      <Checkbox
+        label="isUnique"
+        value={globalState.quiz.isUnique}
+        onChange={onChangeUnique}
+      />
     </div>
   );
 }
