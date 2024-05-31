@@ -2,6 +2,14 @@
   display: flex;
   flex-grow: 1;
   height: var(--top-tabs-height);
+
+  a {
+    text-decoration: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
 }
 
 @media (min-width: 801px) { /* >= */

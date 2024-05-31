@@ -8,6 +8,22 @@ export enum QUESTION_TYPE {
   SELECT_TRANSLATION,
 }
 
+export type T_QUESTION = {
+  type: QUESTION_TYPE;
+  label: string;
+};
+
+export const QUESTIONS: T_QUESTION[] = [
+  {
+    type: QUESTION_TYPE.ENTER_FOREIGN_WORD,
+    label: "Enter foreign word",
+  },
+  {
+    type: QUESTION_TYPE.SELECT_TRANSLATION,
+    label: "Select translation",
+  },
+] as const;
+
 export function getRandomQuestionType() {
   return 4;
   return [

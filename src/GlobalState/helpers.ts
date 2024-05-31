@@ -23,8 +23,7 @@ export function getStoredState(): T_GLOBAL_STATE | null {
 
   if (
     globalStateTyped.quizLastRowsCount &&
-    globalStateTyped.latestLastRowsCount &&
-    globalStateTyped.selectedRows
+    globalStateTyped.latestLastRowsCount
   ) {
     return globalStateTyped;
   }

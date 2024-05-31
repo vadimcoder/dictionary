@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
 
 export const GLOBAL_NAV_ARIA = {
@@ -18,9 +18,14 @@ export function TopMenu() {
   return (
     <div className={"TopMenu"}>
       {Object.entries(GLOBAL_NAV_ARIA).map(([name, { tabId, contentId }]) => (
-        <Link id={tabId} aria-controls={contentId} key={name} to={`/${name}`}>
+        <NavLink
+          id={tabId}
+          aria-controls={contentId}
+          key={name}
+          to={`/${name}`}
+        >
           {name}
-        </Link>
+        </NavLink>
       ))}
     </div>
   );

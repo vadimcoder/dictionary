@@ -1,0 +1,9 @@
+.correct {
+  border-color: var(--color-green);
+  background-color: var(--color-green-softer);
+}
+
+.incorrect {
+  border-color: var(--color-red);
+  background-color: var(--color-red-softer);
+}

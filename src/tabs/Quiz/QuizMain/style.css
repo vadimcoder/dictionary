@@ -1,0 +1,9 @@
+.QuizMain {
+  margin-block-start: 10px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+}
+
+.QuizMainSelectContainer {
+  margin-block-start: 10px;
+}

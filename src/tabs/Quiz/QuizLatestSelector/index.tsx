@@ -4,7 +4,11 @@ import { Checkbox } from "../../../components/form/Checkbox/Checkbox";
 import { InputNumber } from "../../../components/form/InputNumber/InputNumber";
 import { useGlobalState } from "../../../GlobalState/GlobalState";
 
-export function QuizLatestSelector() {
+export function QuizLatestSelector({
+  onChangeLastRows,
+}: {
+  onChangeLastRows: (quizLastRowsCount: number) => void;
+}) {
   const [isAll, setIsAll] = useState<boolean>(false);
   const [globalState, setGlobalState] = useGlobalState();
 
@@ -13,6 +17,7 @@ export function QuizLatestSelector() {
       ...oldState,
       quizLastRowsCount,
     }));
+    onChangeLastRows(quizLastRowsCount);
   }
 
   return (

@@ -1,7 +1,47 @@
+import { useState } from "react";
+import { T_ROW } from "../../../../db/types";
+import "./style.css";
+import "../style.css";
+
 export function EnterForeignWord({
   onCorrectAnswer,
+  row,
 }: {
   onCorrectAnswer: () => void;
+  row: T_ROW;
 }) {
-  return <div>EnterForeignWord</div>;
+  const [value, setValue] = useState<string>("");
+  const [isAnswerShown, showAnswer] = useState<boolean>(false);
+
+  const isCorrect = value === row.wordSet.word;
+
+  if (isCorrect) {
+    setTimeout(() => {
+      onCorrectAnswer();
+    }, 400);
+  }
+
+  return (
+    <>
+      <p>{row.translation}</p>
+
+      <form className={"EnterForeignWordPanel"}>
+        <input
+          className={`EnterForeignWordInput ${isCorrect ? "correct" : "incorrect"}`}
+          value={value}
+          onChange={({ target: { value } }) => setValue(value)}
+          type={"text"}
+        />
+
+        <button
+          type={"button"}
+          onClick={() => (isAnswerShown ? showAnswer(false) : showAnswer(true))}
+        >
+          Toggle answer
+        </button>
+      </form>
+
+      {isAnswerShown && <p>{row.wordSet.word}</p>}
+    </>
+  );
 }

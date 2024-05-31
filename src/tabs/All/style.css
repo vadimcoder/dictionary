@@ -8,6 +8,13 @@
   padding-block-start: 10px;
   padding-inline-start: 10px;
 
+  a {
+    text-decoration: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
 }
 
 @media (max-width: 800px) {

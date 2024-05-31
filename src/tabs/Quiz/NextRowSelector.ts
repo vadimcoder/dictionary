@@ -1,6 +1,6 @@
-import { getRandomItem } from "../../../utils/utils";
-import { DB } from "../../../db/db";
-import { T_ROW } from "../../../db/types";
+import { getRandomItem } from "../../utils/utils";
+import { DB } from "../../db/db";
+import { T_ROW } from "../../db/types";
 
 export class NextRowSelector {
   #lastRow: T_ROW | null = null;

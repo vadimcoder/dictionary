@@ -1,4 +1,5 @@
 import "./style.css";
+import "../style.css";
 import { ChangeEvent, useMemo, useState } from "react";
 import shuffle from "lodash.shuffle";
 import { T_ROW, T_ROWS } from "../../../../db/types";
@@ -62,7 +63,7 @@ export function SelectTranslation({
 
   function getModifier(variant: string) {
     if (isChecked(variant)) {
-      return `SelectTranslationVariant_${isCorrect ? "correct" : "incorrect"}`;
+      return `${isCorrect ? "correct" : "incorrect"}`;
     }
 
     return "";

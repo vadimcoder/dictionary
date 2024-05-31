@@ -1,5 +1,5 @@
 import "./style.css";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 import { GLOBAL_NAV_ARIA } from "../../components/NavBar/TopMenu";
 
@@ -26,14 +26,14 @@ export function All() {
     >
       <div className={"main-navigation"}>
         {TABS.map((name) => (
-          <Link
+          <NavLink
             id={`${ALL_NAV_ARIA.tabId}${name}`}
             aria-controls={`${ALL_NAV_ARIA.contentId}${name}`}
             key={name}
             to={name}
           >
             {name}
-          </Link>
+          </NavLink>
         ))}
       </div>
 

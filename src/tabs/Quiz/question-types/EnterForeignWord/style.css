@@ -1,0 +1,8 @@
+.EnterForeignWordPanel {
+  display: flex;
+  gap: 20px;
+}
+
+.EnterForeignWordInput {
+  height: 30px;
+}
