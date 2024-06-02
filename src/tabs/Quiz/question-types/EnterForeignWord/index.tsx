@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { T_ROW } from "../../../../db/types";
 import "./style.css";
 import "../style.css";
@@ -15,6 +15,14 @@ export function EnterForeignWord({
 
   const isCorrect = value === row.wordSet.word;
 
+  function onSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    if (isCorrect) {
+      onCorrectAnswer();
+    }
+  }
+
   // if (isCorrect) {
   //   setTimeout(() => {
   //     onCorrectAnswer();
@@ -25,12 +33,13 @@ export function EnterForeignWord({
     <>
       <p>{row.translation}</p>
 
-      <form className={"EnterForeignWordPanel"}>
+      <form className={"EnterForeignWordPanel"} onSubmit={onSubmit}>
         <input
           className={`EnterForeignWordInput ${isCorrect ? "correct" : "incorrect"}`}
           value={value}
           onChange={({ target: { value } }) => setValue(value)}
           type={"text"}
+          autoFocus={true}
         />
 
         <button
