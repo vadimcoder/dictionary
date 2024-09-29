@@ -13,7 +13,10 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { useMemo, useState } from "react";
-import { getVerbWithoutTo } from "../../utils/filenames";
+
+function getVerbWithoutTo(word: string) {
+  return word.startsWith("to ") ? word.substring(3) : word;
+}
 
 export function WordWithLinks({
   word,
