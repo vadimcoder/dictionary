@@ -46,7 +46,7 @@ export function EnterForeignWord({
           type={"button"}
           onClick={() => (isAnswerShown ? showAnswer(false) : showAnswer(true))}
         >
-          Toggle answer
+          Show answer
         </button>
 
         <button type={"button"} onClick={onCorrectAnswer} disabled={!isCorrect}>
