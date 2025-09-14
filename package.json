@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@floating-ui/react": "^0.27.7",
     "@fontsource/roboto": "^5.2.5",
     "date-fns": "^4.1.0",
